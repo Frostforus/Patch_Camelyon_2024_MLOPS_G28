@@ -1,7 +1,8 @@
-from typing import Any
 from pytorch_lightning import LightningModule
-from pytorch_lightning.utilities.types import STEP_OUTPUT, OptimizerLRScheduler
 from torch import nn, optim
+import torch
+from torch.utils.data import DataLoader, TensorDataset
+from torchvision.datasets import PCAM
 
 class SimpleCNN(LightningModule):
     def __init__(self):
@@ -39,3 +40,24 @@ class SimpleCNN(LightningModule):
     
     def configure_optimizers(self):
         return optim.Adam(self.parameters(), lr=1e-3)
+    
+    def train_dataloader(self):
+        train_images = torch.load('./data/processed/train_images.pt')
+        train_target = torch.load('./data/processed/train_target.pt')
+        train_ds = TensorDataset(train_images, train_target)
+        return DataLoader(train_ds, batch_size=32)
+        #return DataLoader(PCAM(root='data/raw/train', split='train', download=True))
+    
+    def test_dataloader(self):
+        test_images = torch.load('./data/processed/test_images.pt')
+        test_target = torch.load('./data/processed/test_target.pt')
+        test_ds = TensorDataset(test_images, test_target)
+        return DataLoader(test_ds, batch_size=32)
+        #return DataLoader(PCAM(root='data/raw/test',split='test', download=True), batch_size=32)
+
+    def val_dataloader(self):
+        val_images = torch.load('./data/processed/val_images.pt')
+        val_target = torch.load('./data/processed/val_target.pt')
+        val_ds = TensorDataset(val_images, val_target)
+        return DataLoader(val_ds, batch_size=32)
+        #return DataLoader(PCAM(root='data/raw/validation',split='val', download=True))
