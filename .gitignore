@@ -1,3 +1,6 @@
+data/raw/*
+data/processed/*
+lightning_logs/*
 docs/site/
 
 # test cache
