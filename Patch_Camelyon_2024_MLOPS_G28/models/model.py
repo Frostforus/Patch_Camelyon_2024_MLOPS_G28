@@ -1,26 +1,41 @@
-import torch
+from typing import Any
+from pytorch_lightning import LightningModule
+from pytorch_lightning.utilities.types import STEP_OUTPUT, OptimizerLRScheduler
+from torch import nn, optim
 
-class MyNeuralNet(torch.nn.Module):
-    """ Basic neural network class. 
-    
-    Args:
-        in_features: number of input features
-        out_features: number of output features
-    
-    """
-    def __init__(self, in_features: int, out_features: int) -> None:
-        self.l1 = torch.nn.Linear(in_features, 500)
-        self.l2 = torch.nn.Linear(500, out_features)
-        self.r = torch.nn.ReLU()
-    
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """Forward pass of the model.
-        
-        Args:
-            x: input tensor expected to be of shape [N,in_features]
+class SimpleCNN(LightningModule):
+    def __init__(self):
+        super().__init__()
+        self.loss_fn = nn.CrossEntropyLoss()
+        self.convnet = nn.Sequential(
+            nn.Conv2d(3, 32, 3, padding=1),
+            nn.ReLU(),
+            nn.Conv2d(32, 64, 3, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(2,2),
 
-        Returns:
-            Output tensor with shape [N,out_features]
+            nn.Conv2d(64, 128, 3, padding=1),
+            nn.ReLU(),
+            nn.Conv2d(128, 128, 3, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(2,2)
+        )
 
-        """
-        return self.l2(self.r(self.l1(x)))
+        self.linear = nn.Sequential(
+            nn.Flatten(),
+            nn.Linear(24*24*128,1024),
+            nn.Linear(1024, 2),
+            nn.LogSoftmax(dim=-1)
+        )
+
+    def forward(self, x):
+        return self.linear(self.convnet(x))
+    
+    def training_step(self, batch):
+        data, label = batch
+        preds = self(data)
+        loss = self.loss_fn(preds, label)
+        return loss
+    
+    def configure_optimizers(self):
+        return optim.Adam(self.parameters(), lr=1e-3)
