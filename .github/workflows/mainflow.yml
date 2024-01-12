@@ -33,9 +33,9 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ${{ steps.pip-cache.outputs.dir }}
-        key: ${{ matrix.os }}-py${{ python-version }}-pip-${{ hashFiles('**/requirements.txt') }}
+        key: ${{ matrix.os }}-pip-${{ hashFiles('**/requirements.txt') }}
         restore-keys: |
-          ${{ matrix.os }}-py${{ python-version }}-pip-
+          ${{ matrix.os }}-pip-
 
     - name: Install dependencies
       run: |
