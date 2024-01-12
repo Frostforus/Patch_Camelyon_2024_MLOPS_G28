@@ -1,12 +1,14 @@
 import os
 import gzip
+import pickle
 
 import h5py
 import numpy as np
 import torch
+from torch.utils.data import TensorDataset, random_split
 
-def h5gz_to_tensor(src, dest, images=False):
-    if os.path.exists(dest):
+def h5gz_to_tensor(src, dest=None, images=False):
+    if dest is not None and os.path.exists(dest):
         ans = input(f'{src} is already processed, do you want to do it again? [y/n]: ')
         if ans.lower() not in ['y', 'yes']:
             return None
@@ -20,15 +22,24 @@ def h5gz_to_tensor(src, dest, images=False):
             else:
                 # The dataset stores labels unsqeezed (Bx1x1x1) for some reason.
                 ds = ds.squeeze()
-            torch.save(ds, dest)
+            if dest is not None:
+                torch.save(ds, dest)
+            else:
+                return ds
 
 if __name__ == '__main__':
-    print('Extracting tensors from test data...')
-    h5gz_to_tensor('./data/raw/camelyonpatch_level_2_split_test_x.h5.gz', './data/processed/test_images.pt', True)
-    h5gz_to_tensor('./data/raw/camelyonpatch_level_2_split_test_y.h5.gz', './data/processed/test_target.pt')
-    print('Extracting tensors from validation data...')
-    h5gz_to_tensor('./data/raw/camelyonpatch_level_2_split_valid_x.h5.gz', './data/processed/val_images.pt', True)
-    h5gz_to_tensor('./data/raw/camelyonpatch_level_2_split_valid_y.h5.gz', './data/processed/val_target.pt')
-    print('Extracting tensors from training data (may take a couple minutes)...')
-    h5gz_to_tensor('./data/raw/camelyonpatch_level_2_split_train_x.h5.gz', './data/processed/train_images.pt', True)
-    h5gz_to_tensor('./data/raw/camelyonpatch_level_2_split_train_y.h5.gz', './data/processed/train_target.pt')
+    # Ensure that the random split is always the same (but still 'random'
+    torch.manual_seed(42)
+
+    data = h5gz_to_tensor(src='./data/raw/camelyonpatch_level_2_split_valid_x.h5.gz',images=True)
+    targets = h5gz_to_tensor(src='./data/raw/camelyonpatch_level_2_split_valid_y.h5.gz',images=False)
+    ds = TensorDataset(data, targets)
+    train_size = int(len(ds)*0.8)
+    test_size = int(len(ds)*0.1)
+    val_size = len(ds) - train_size - test_size
+
+    train_ds, test_ds, val_ds = random_split(ds, [train_size, test_size, val_size])
+    torch.save(train_ds, './data/processed/train_dataset.pkl')
+    torch.save(test_ds, './data/processed/test_dataset.pkl')
+    torch.save(val_ds, './data/processed/validation_dataset.pkl')
+    

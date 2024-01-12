@@ -42,22 +42,13 @@ class SimpleCNN(LightningModule):
         return optim.Adam(self.parameters(), lr=1e-3)
     
     def train_dataloader(self):
-        train_images = torch.load('./data/processed/train_images.pt')
-        train_target = torch.load('./data/processed/train_target.pt')
-        train_ds = TensorDataset(train_images, train_target)
+        train_ds = torch.load('./data/processed/train_dataset.pkl')
         return DataLoader(train_ds, batch_size=32)
-        #return DataLoader(PCAM(root='data/raw/train', split='train', download=True))
     
     def test_dataloader(self):
-        test_images = torch.load('./data/processed/test_images.pt')
-        test_target = torch.load('./data/processed/test_target.pt')
-        test_ds = TensorDataset(test_images, test_target)
+        test_ds = torch.load('./data/processed/test_dataset.pkl')
         return DataLoader(test_ds, batch_size=32)
-        #return DataLoader(PCAM(root='data/raw/test',split='test', download=True), batch_size=32)
 
     def val_dataloader(self):
-        val_images = torch.load('./data/processed/val_images.pt')
-        val_target = torch.load('./data/processed/val_target.pt')
-        val_ds = TensorDataset(val_images, val_target)
+        val_ds = torch.load('./data/processed/validation_dataset.pkl')
         return DataLoader(val_ds, batch_size=32)
-        #return DataLoader(PCAM(root='data/raw/validation',split='val', download=True))
