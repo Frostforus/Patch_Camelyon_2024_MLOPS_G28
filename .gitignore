@@ -2,6 +2,8 @@ data/raw/*
 data/processed/*
 lightning_logs/*
 docs/site/
+wandb/*
+Patch_Camelyon_MLOps_WandB
 
 # test cache
 manual_test/
