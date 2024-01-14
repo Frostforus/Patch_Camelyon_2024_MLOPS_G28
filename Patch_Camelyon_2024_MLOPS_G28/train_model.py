@@ -6,7 +6,7 @@ import hydra
 
 from models.model import SimpleCNN
 
-@hydra.main(config_path="conf", config_name="config")
+@hydra.main(config_path="conf", config_name="config", version_base= '1.2')
 def train(cfg):
 
     torch.manual_seed(cfg.model.random_seed)
@@ -25,6 +25,10 @@ def train(cfg):
         accumulate_grad_batches=cfg.trainer.accumulate_grad_batches,
         gradient_clip_val=cfg.trainer.gradient_clip_val
     )
+    
+    trainer.fit(model)
+
+    trainer.save_checkpoint("trained_model_out.ckpt")
 
 if __name__ == '__main__':
     train()

@@ -1,12 +1,9 @@
-# conf/config.yaml
-
 model:
-  lr: 1e-3
+  lr: 0.001
   batch_size: 64
   random_seed: 42
-
 trainer:
-  max_epochs: 10
+  max_epochs: 50
   limit_train_batches: 0.2
   accelerator: cpu
   check_val_every_n_epoch: 2
