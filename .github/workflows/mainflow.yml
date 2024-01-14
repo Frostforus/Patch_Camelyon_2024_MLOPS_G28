@@ -45,9 +45,12 @@ jobs:
 
     - uses: iterative/setup-dvc@v1
     - name: Get data
-      run: dvc pull
       env:
-        GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
+        SERVICE_ACCOUNT_KEY_FILE: ${{ secrets.SERVICE_ACCOUNT_KEY_FILE }}
+      run: |
+         gcloud auth activate-service-account --key-file="${{ env.SERVICE_ACCOUNT_KEY_FILE }}"
+         dvc pull
+
 
     - name: Test with pytest
       run: |
