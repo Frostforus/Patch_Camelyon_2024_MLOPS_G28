@@ -43,12 +43,19 @@ jobs:
         pip install -r requirements.txt
       #pip install -r ../../requirements_tests.txt
 
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v2'
+      with:
+        SERVICE_ACCOUNT_KEY_FILE: ${{ secrets.SERVICE_ACCOUNT_KEY_FILE }}
+
+    - name: 'Set up Cloud SDK'
+      uses: 'google-github-actions/setup-gcloud@v2'
+      with:
+        version: '>= 363.0.0'
+
     - uses: iterative/setup-dvc@v1
     - name: Get data
-      env:
-        SERVICE_ACCOUNT_KEY_FILE: ${{ secrets.SERVICE_ACCOUNT_KEY_FILE }}
       run: |
-         py -m gcloud auth activate-service-account --key-file="${{ env.SERVICE_ACCOUNT_KEY_FILE }}"
          dvc pull
 
 
