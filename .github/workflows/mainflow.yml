@@ -48,7 +48,7 @@ jobs:
       env:
         SERVICE_ACCOUNT_KEY_FILE: ${{ secrets.SERVICE_ACCOUNT_KEY_FILE }}
       run: |
-         gcloud auth activate-service-account --key-file="${{ env.SERVICE_ACCOUNT_KEY_FILE }}"
+         py -m gcloud auth activate-service-account --key-file="${{ env.SERVICE_ACCOUNT_KEY_FILE }}"
          dvc pull
 
 
