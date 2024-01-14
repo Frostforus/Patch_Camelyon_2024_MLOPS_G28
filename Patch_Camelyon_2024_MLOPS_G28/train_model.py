@@ -1,4 +1,5 @@
 from pytorch_lightning import Trainer
+import torch
 from pytorch_lightning.loggers import WandbLogger
 from torchvision.datasets import PCAM
 import hydra
@@ -7,6 +8,9 @@ from models.model import SimpleCNN
 
 @hydra.main(config_path="conf", config_name="config")
 def train(cfg):
+
+    torch.manual_seed(cfg.model.random_seed)
+
     model = SimpleCNN(
         lr=cfg.model.lr,
         batch_size=cfg.model.batch_size

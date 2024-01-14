@@ -15,6 +15,7 @@ class SimpleCNN(LightningModule):
         self.save_hyperparameters('lr','batch_size')
         self.lr = lr
         self.batch_size = batch_size
+        torch.manual_seed(42) #have to be also added to conf
 
         self.loss_fn = nn.CrossEntropyLoss()
         self.convnet = nn.Sequential(
