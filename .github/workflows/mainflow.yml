@@ -56,7 +56,9 @@ jobs:
     - uses: iterative/setup-dvc@v1
     - name: Get data
       run: |
+         cd Patch_Camelyon_2024_MLOPS_G28\data
          dvc pull
+         cd ../..
 
 
     - name: Test with pytest
