@@ -32,14 +32,14 @@ if __name__ == "__main__":
     # Ensure that the random split is always the same (but still 'random'
     torch.manual_seed(42)
 
-    data = h5gz_to_tensor(src="./data/raw/camelyonpatch_level_2_split_valid_x.h5.gz", images=True)
-    targets = h5gz_to_tensor(src="./data/raw/camelyonpatch_level_2_split_valid_y.h5.gz", images=False)
+    data = h5gz_to_tensor(src="../../data/raw/camelyonpatch_level_2_split_valid_x.h5.gz", images=True)
+    targets = h5gz_to_tensor(src="../../data/raw/camelyonpatch_level_2_split_valid_y.h5.gz", images=False)
     ds = TensorDataset(data, targets)
     train_size = int(len(ds) * 0.8)
     test_size = int(len(ds) * 0.1)
     val_size = len(ds) - train_size - test_size
 
     train_ds, test_ds, val_ds = random_split(ds, [train_size, test_size, val_size])
-    torch.save(train_ds, "./data/processed/train_dataset.pkl")
-    torch.save(test_ds, "./data/processed/test_dataset.pkl")
-    torch.save(val_ds, "./data/processed/validation_dataset.pkl")
+    torch.save(train_ds, "../../data/processed/train_dataset.pkl")
+    torch.save(test_ds, "../../data/processed/test_dataset.pkl")
+    torch.save(val_ds, "../../data/processed/validation_dataset.pkl")
