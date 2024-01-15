@@ -184,3 +184,5 @@ cython_debug/
 #.idea/
 
 /data
+wandb
+Patch_Camelyon_MLOps_G28/wandb
