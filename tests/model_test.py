@@ -16,6 +16,9 @@ def test_model_forward():
     )  # The forward pass of the NN does not return a tensor of a valid shape
 
 
-def test_model_accuracy():
+def test_model_accuracy_100():
     assert NETWORK.accuracy(PREDS_01, LABELS) == 1  # Accuracy does not identify that both tensors are equal
+
+
+def test_model_accuracy_0():
     assert NETWORK.accuracy(PREDS_10, LABELS) == 0  # Accuracy does not identify that both tensoes are oposite
