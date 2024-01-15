@@ -1,8 +1,6 @@
 import torch
-from Patch_Camelyon_2024_MLOPS_G28.models.model import SimpleCNN
+from tests import NETWORK
 
-torch.manual_seed(42)
-NETWORK = SimpleCNN()
 DATA = torch.ones((100, 3, 96, 96))
 LABELS = torch.ones(10)
 PREDS_01 = torch.cat((torch.zeros((10, 1)), torch.ones((10, 1))), dim=1)

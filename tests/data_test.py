@@ -2,10 +2,8 @@ import os.path
 import torch
 import pytest
 
+from tests import IMAGES_PWD, LABELS_PWD
 from Patch_Camelyon_2024_MLOPS_G28.data.make_dataset import h5gz_to_tensor
-
-IMAGES_PWD = "data/raw/camelyonpatch_level_2_split_valid_x.h5.gz"
-LABELS_PWD = "data/raw/camelyonpatch_level_2_split_valid_y.h5.gz"
 
 if os.path.exists(IMAGES_PWD):
     IMAGES = h5gz_to_tensor(src=IMAGES_PWD, images=True)

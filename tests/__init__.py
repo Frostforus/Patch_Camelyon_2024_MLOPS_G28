@@ -1,5 +1,10 @@
-import os
+import torch
+from Patch_Camelyon_2024_MLOPS_G28.models.model import SimpleCNN
 
-_TEST_ROOT = os.path.dirname(__file__)  # root of test folder
-_PROJECT_ROOT = os.path.dirname(_TEST_ROOT)  # root of project
-_PATH_DATA = os.path.join(_PROJECT_ROOT, "data/processed")  # root of data
+
+torch.manual_seed(42)
+NETWORK = SimpleCNN()
+DATA_PDW = "data/processed/test_dataset.pkl"
+
+IMAGES_PWD = "data/raw/camelyonpatch_level_2_split_valid_x.h5.gz"
+LABELS_PWD = "data/raw/camelyonpatch_level_2_split_valid_y.h5.gz"
