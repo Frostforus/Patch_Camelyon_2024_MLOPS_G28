@@ -1,4 +1,7 @@
 
+#dvc
+dvc >= 3.39.0
+
 # docs
 mkdocs <= 1.5.3
 mkdocs-material <= 9.4.6
