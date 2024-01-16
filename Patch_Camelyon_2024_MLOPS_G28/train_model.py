@@ -25,7 +25,7 @@ def train(cfg):
 
     # Set up PyTorch Lightning Trainer with config parameters
     trainer = Trainer(
-        accelerator=cfg.trainer.accelerator,
+        accelerator=cfg.trainer.gpu_accelerator if torch.cuda.is_available() else cfg.trainer.cpu_accelerator,
         logger=wandb_logger,
         max_epochs=cfg.trainer.max_epochs,
         limit_train_batches=cfg.trainer.limit_train_batches,

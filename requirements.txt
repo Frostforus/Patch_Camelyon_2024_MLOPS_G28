@@ -5,3 +5,4 @@ h5py>= 3.10
 wandb>=0.12.10
 hydra-core>=1.1.1
 google-cloud-storage>=1.43.0
+gcloud >= 0.18.3

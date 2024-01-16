@@ -1,2 +1,0 @@
-from patch_camelyon_2024_mlops_g28.models.model import MyNeuralNet
-from patch_camelyon_2024_mlops_g28.predict_model import predict
