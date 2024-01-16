@@ -3,7 +3,7 @@
 ## OVERALL GOAL OF THE PROJECT:
 The goal of this project is to become familiar with skills associated with Machine Learning Projects, and during that create an acceptable classifier with the skills learned. This classifier will be a binary classifier based on the PatchCamelyion benchmark, the model will answer if a picture has a tumor or not.
 
-## FRAMEWORK: 
+## FRAMEWORK:
 We are planning on using pytorch extended with torchvision. As pytorch is the most used framework in academic settings, and it was recommended in this course, we decided to go with it for ease of use.  For image classification a natural choice with pytorch is torchvision, as it is built for the framework.
 Torchvision: https://pytorch.org/vision/stable/index.html
 
@@ -14,7 +14,7 @@ https://pytorch.org/vision/stable/auto_examples/index.html
 
 The PatchCamelyon benchmark is a new and challenging image classification dataset. It consists of 327.680 color images (96 x 96px) extracted from histopathologic scans of     lymph node sections. Each image is annoted with a binary label indicating presence of metastatic tissue.
 
-## MODEL: 
+## MODEL:
 
 Initially we will start with a decoder model based of the VGG architecture [link](https://pytorch.org/vision/stable/models/vgg.html)
 
