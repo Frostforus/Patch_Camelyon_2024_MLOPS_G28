@@ -1,6 +1,13 @@
 # Base image
 FROM python:3.11-slim
 
+COPY ml-ops-ex-b1b1bd7f7ce9.json ml-ops-ex-b1b1bd7f7ce9.json
+
+ENV GOOGLE_APPLICATION_CREDENTIALS=ml-ops-ex-b1b1bd7f7ce9.json
+
+# Set WandB API Key
+ENV WANDB_API_KEY=792ab2b5bc699fe2e350a54f40aff67f76f00304
+
 RUN apt update && \
     apt install --no-install-recommends -y build-essential gcc && \
     apt clean && rm -rf /var/lib/apt/lists/*

@@ -3,19 +3,27 @@ import torch
 from pytorch_lightning.loggers import WandbLogger
 from torchvision.datasets import PCAM
 import hydra
+from google.cloud import storage
+import os
 
 from models.model import SimpleCNN
 
-@hydra.main(config_path="conf", config_name="config", version_base= '1.2')
+#config hydra
+@hydra.main(config_path="conf", config_name="config", version_base='1.2')
 def train(cfg):
 
+    # Set random seeds for reproducibility
     torch.manual_seed(cfg.model.random_seed)
 
+    #Set hyperaparameters
     model = SimpleCNN(
         lr=cfg.model.lr,
         batch_size=cfg.model.batch_size
     )
-    wandb_logger = WandbLogger(log_model=True,project='Patch_Camelyon_MLOps_WandB')
+    # Set up logging with WandB
+    wandb_logger = WandbLogger(log_model=True, project='Patch_Camelyon_MLOps_WandB')
+
+    # Set up PyTorch Lightning Trainer with config parameters
     trainer = Trainer(
         accelerator=cfg.trainer.accelerator,
         logger=wandb_logger,
@@ -26,9 +34,23 @@ def train(cfg):
         gradient_clip_val=cfg.trainer.gradient_clip_val
     )
     
+    # Train the model
     trainer.fit(model)
 
-    trainer.save_checkpoint("trained_model_out.ckpt")
+    # Save the model locally first
+    local_checkpoint_path = "trained_model_out.ckpt"
+    trainer.save_checkpoint(local_checkpoint_path)
+
+    # Upload the model to Google Cloud Storage bucket
+    bucket_name = "prediction-model-bucket"
+    storage_client = storage.Client()
+    bucket = storage_client.get_bucket(bucket_name)
+
+    blob = bucket.blob("trained_model_out.ckpt")
+    blob.upload_from_filename(local_checkpoint_path)
+
+    # Delete the locally created file after uploading to the bucket
+    os.remove(local_checkpoint_path)
 
 if __name__ == '__main__':
     train()

@@ -1,0 +1,11 @@
+model:
+  lr: 0.001
+  batch_size: 64
+  random_seed: 42
+trainer:
+  max_epochs: 2
+  limit_train_batches: 0.2
+  accelerator: cpu
+  check_val_every_n_epoch: 2
+  accumulate_grad_batches: 1
+  gradient_clip_val: 0.5
