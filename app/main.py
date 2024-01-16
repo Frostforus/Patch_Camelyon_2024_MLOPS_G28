@@ -6,19 +6,27 @@ app = FastAPI()
 
 MODEL = None
 
-
-def load_modeL_from_g_bucket():
-    return "model"
+from google.cloud import storage
 
 
-MODEL = load_modeL_from_g_bucket()
+def download_blob(bucket_name,
+                  source_blob_name,
+                  destination_file_name,
+                  key_file_path='prediction_model_bucket_service_account_key_file.json'):
+    """Downloads a blob from the bucket."""
+    storage_client = storage.Client.from_service_account_json(key_file_path)
+    bucket = storage_client.get_bucket(bucket_name)
+
+    blob = bucket.blob(source_blob_name)
+    blob.download_to_filename(destination_file_name)
 
 
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
+    print(f"Blob {source_blob_name} downloaded to {destination_file_name}.")
 
 
-@app.post("/predict")
-async def predict(file: UploadFile = File(...)):
-    return {"message": f"Hello {MODEL}"}
+# Replace these values with your own
+bucket_name = 'prediction-model-bucket'
+source_blob_name = 'helle_google.txt'
+destination_file_name = 'local_file.txt'
+
+download_blob(bucket_name, source_blob_name, destination_file_name)
