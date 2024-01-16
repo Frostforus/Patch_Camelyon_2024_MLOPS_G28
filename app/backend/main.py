@@ -4,24 +4,28 @@ from http import HTTPStatus
 from pydantic import BaseModel
 import os
 from google.cloud import storage
-
-# Specify the path to your YAML file
-yaml_file_path = 'config.yaml'
-# Load configurations from the YAML file
-with open(yaml_file_path, 'r') as file:
-    configs = yaml.safe_load(file)
+import cv2
+import numpy as np
 
 
 class PredictionModel:
-    def __init__(self, source_bucket_name=configs['google_cloud']['bucket_name'],
-                 source_model_blob_name=configs['google_cloud']['model_blob_name'],
-                 destination_file_name=configs['local_model_file_name'],
-                 key_file_path=configs['google_cloud']['key_file_name']):
+    def __init__(self,
+                 force_download=False,
+                 yaml_file_path='./config/config.yaml'
+                 ):
         self.model = None
-        self.source_bucket_name = source_bucket_name
-        self.source_model_blob_name = source_model_blob_name
-        self.destination_file_name = destination_file_name
-        self.key_file_path = key_file_path
+
+        # Load configurations from the YAML file
+        with open(yaml_file_path, 'r') as file:
+            configs = yaml.safe_load(file)
+            self.source_bucket_name = configs['google_cloud']['bucket_name']
+            self.source_model_blob_name = configs['google_cloud']['model_blob_name']
+            self.destination_file_name = configs['local_model_file_name']
+            self.key_file_path = configs['google_cloud']['key_file_name']
+            self.target_size = tuple((configs['target_size']['height'], configs['target_size']['width']))
+
+
+        self.model = self._load_model(force_download)
 
     # TODO: add parameters to init function too
     def _download_model_from_blob(self):
@@ -34,7 +38,7 @@ class PredictionModel:
         blob.download_to_filename(self.destination_file_name)
         print(f"Model {self.source_model_blob_name} downloaded to {self.destination_file_name}.")
 
-    def _load_model(self, force_download=False):
+    def _load_model(self, force_download):
         # List model files in the current directory
         files = [model_file_name for model_file_name in os.listdir(".") if model_file_name.endswith(".ckpt")]
         print(files)
@@ -49,13 +53,23 @@ class PredictionModel:
 
         return files[0]
 
-    def predict(self, image = None):
+    def _resize_image(self, image: UploadFile):
+
+        contents = image.file.read()
+        image_array = cv2.imdecode(np.frombuffer(contents, np.uint8), cv2.IMREAD_COLOR)
+        return cv2.resize(image_array, self.target_size)
+
+
+    def predict(self, image: UploadFile=None):
+        if image:
+            self._resize_image(image)
         return "Prediction with " + self.model
 
 
 # Global variables,
 app = FastAPI()
 prediction_model = PredictionModel()
+
 
 @app.post("/predict/test/")
 async def prediction_test():
@@ -64,6 +78,8 @@ async def prediction_test():
 
 
 @app.post("/predict/")
-async def prediction():
+async def predict_from_image(image: UploadFile = File(...)):
     print("File uploaded, proceeding with prediction")
-    return {"message": "Image uploaded, resized, and saved successfully"}
+    msg = prediction_model.predict(image)
+
+    return {"message": "Testing with uploaded image. " + msg}
