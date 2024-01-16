@@ -1,0 +1,23 @@
+anyio @ file:///C:/ci_311/anyio_1676425491996/work/dist
+cachetools==5.3.2
+certifi==2023.11.17
+charset-normalizer==3.3.2
+fastapi @ file:///C:/b/abs_17bc_xka63/croot/fastapi_1693295449860/work
+google-api-core==2.15.0
+google-auth==2.26.2
+google-cloud-core==2.4.1
+google-cloud-storage==2.14.0
+google-crc32c==1.5.0
+google-resumable-media==2.7.0
+googleapis-common-protos==1.62.0
+idna @ file:///C:/ci_311/idna_1676424932545/work
+protobuf==4.25.2
+pyasn1==0.5.1
+pyasn1-modules==0.3.0
+pydantic @ file:///C:/b/abs_9byjrk31gl/croot/pydantic_1695798904828/work
+requests==2.31.0
+rsa==4.9
+sniffio @ file:///C:/ci_311/sniffio_1676425339093/work
+starlette @ file:///C:/b/abs_f6jqjvlnz0/croot/starlette-recipe_1692980584602/work
+typing_extensions @ file:///C:/b/abs_213vg2cd1l/croot/typing_extensions_1690297804941/work
+urllib3==2.1.0
