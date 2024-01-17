@@ -7,11 +7,11 @@ RUN apt update && \
 
 COPY requirements.txt requirements.txt
 COPY pyproject.toml pyproject.toml
-COPY Patch_Camelyon_2024_MLOPS_G28/ Patch_Camelyon_2024_MLOPS_G28/
+COPY patch_camelyon_2024_mlops_g28/ patch_camelyon_2024_mlops_g28/
 COPY data/ data/
 
 WORKDIR /
 RUN pip install -r requirements.txt --no-cache-dir
 RUN pip install . --no-deps --no-cache-dir
 
-ENTRYPOINT ["python", "-u", "Patch_Camelyon_2024_MLOPS_G28/predict_model.py"]
+ENTRYPOINT ["python", "-u", "patch_camelyon_2024_mlops_g28/predict_model.py"]

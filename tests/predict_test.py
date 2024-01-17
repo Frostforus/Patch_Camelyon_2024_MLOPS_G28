@@ -5,7 +5,7 @@ import pytest
 from tests import DATA_PDW, NETWORK
 
 from torch.utils.data import DataLoader
-from Patch_Camelyon_2024_MLOPS_G28.predict_model import predict
+from patch_camelyon_2024_mlops_g28.predict_model import predict
 
 if os.path.exists(DATA_PDW):
     DATASET = torch.load(DATA_PDW)[0:2][0]

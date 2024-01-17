@@ -3,7 +3,7 @@ requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "Patch_Camelyon_2024_MLOPS_G28"
+name = "patch_camelyon_2024_mlops_g28"
 version = "0.0.1"
 description = "A short description of the project."
 authors = [
@@ -15,7 +15,7 @@ requires-python = ">=3.11"
 dynamic = ["dependencies", "optional-dependencies"]
 
 [tool.setuptools]
-packages = ["Patch_Camelyon_2024_MLOPS_G28"]
+packages = ["patch_camelyon_2024_mlops_g28"]
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
