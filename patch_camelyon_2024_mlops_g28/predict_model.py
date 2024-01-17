@@ -50,6 +50,7 @@ def main(modelpath, datapath):
     preds = predict(model, DataLoader(PredictionDataset(data), batch_size=64))
     torch.save(preds, f"./data/predictions/predictions_{os.path.basename(datafile).split('.')[0]}.pt")
     print(f"Predictions: {preds.tolist()}")
+    return preds
 
 
 if __name__ == "__main__":
