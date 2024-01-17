@@ -186,3 +186,4 @@ cython_debug/
 /data
 wandb
 Patch_Camelyon_MLOps_G28/wandb
+models/*
