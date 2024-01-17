@@ -2,15 +2,15 @@ import torch
 import os
 import pytest
 
-from tests import DATA_PDW, NETWORK, MODEL_PDW, PKL_PDW, PT_PDW, NPY_PDW, OTHER_PDW
+from tests import DATA_PDW, NETWORK, MODEL_PDW, PKL_PDW, PT_PDW, OTHER_PDW
 
 from torch.utils.data import DataLoader
 from patch_camelyon_2024_mlops_g28.predict_model import predict, PredictionDataset, main
 
 if os.path.exists(DATA_PDW):
     DATA = torch.load(DATA_PDW)
-    torch.save(DATA[0:10], PT_PDW)
-    torch.save(DATA[0:10], NPY_PDW)
+    torch.save(DATA[0:10], PKL_PDW)
+    torch.save(DATA[0:10][0], PT_PDW)
     ONE_IMAGE_DATASET = PredictionDataset(DATA[0][0])
     DATASET = PredictionDataset(DATA[:][0])
     DATALOADER = DataLoader(dataset=DATASET, batch_size=5)
@@ -49,23 +49,18 @@ def test_predictionDataset_one_image_get_item():
 @pytest.mark.skipif(not os.path.exists(DATA_PDW), reason="Data file not found")
 def test_prediction_function():
     assert predict(model=NETWORK, dataloader=DATALOADER).shape == torch.Size(
-        [len(DATASET)]
+        [len(DATA)]
     )  # The output shape of the prediction function is incorrect
 
 
 @pytest.mark.skipif(not os.path.exists(PKL_PDW) or not os.path.exists(MODEL_PDW), reason="Data file not found")
 def test_main_function_PKL():
-    assert main(MODEL_PDW, PKL_PDW).shape == torch.Size([len(DATA)])
+    assert main(MODEL_PDW, PKL_PDW).shape == torch.Size([10])
 
 
 @pytest.mark.skipif(not os.path.exists(PT_PDW) or not os.path.exists(MODEL_PDW), reason="Data file not found")
 def test_main_function_PT():
     assert main(MODEL_PDW, PT_PDW).shape == torch.Size([10])
-
-
-@pytest.mark.skipif(not os.path.exists(NPY_PDW) or not os.path.exists(MODEL_PDW), reason="Data file not found")
-def test_main_function_NPY():
-    assert main(MODEL_PDW, NPY_PDW).shape == torch.Size([10])
 
 
 @pytest.mark.skipif(not os.path.exists(OTHER_PDW) or not os.path.exists(MODEL_PDW), reason="Data file not found")

@@ -1,5 +1,4 @@
 import sys
-import numpy as np
 import torch
 from torch.utils.data import Dataset, DataLoader
 import os
@@ -36,14 +35,12 @@ def main(modelpath, datapath):
     # checks if the number of arguments passed to the script is three
     model = torch.load(modelpath)
     datafile = datapath  # data file path
-    if ".npy" in datafile:
-        data = np.moveaxis(np.load(datafile), -1, -3)  # traspose data
-    elif ".pt" in datafile:
+    if ".pt" in datafile:
         data = torch.load(datafile)
     elif ".pkl" in datafile:
         # Dataset file, only take images from it
         data = torch.load(datafile)
-        data = torch.stack([image for image, _ in data])  # get only the umages from the file
+        data = torch.stack([image for image in data[0]])  # get only the umages from the file
     else:
         print(f'File format not suported: {datafile.split(".")[-1]}')
         raise Exception(f'File format not suported: {datafile.split(".")[-1]}')
