@@ -5,6 +5,7 @@ lightning_logs/*
 docs/site/
 wandb/*
 Patch_Camelyon_MLOps_WandB
+models/
 
 # test cache
 manual_test/

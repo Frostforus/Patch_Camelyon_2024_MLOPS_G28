@@ -90,15 +90,15 @@ class SimpleCNN(LightningModule):
         return optim.Adam(self.parameters(), lr=self.lr)
 
     def train_dataloader(self):
-        train_ds = torch.load("../data/processed/train_dataset.pkl")
+        train_ds = torch.load("./data/processed/train_dataset.pkl")
         return DataLoader(train_ds, batch_size=self.batch_size)
 
     def test_dataloader(self):
-        test_ds = torch.load("../data/processed/test_dataset.pkl")
+        test_ds = torch.load("./data/processed/test_dataset.pkl")
         return DataLoader(test_ds, batch_size=self.batch_size)
 
     def val_dataloader(self):
-        val_ds = torch.load("../data/processed/validation_dataset.pkl")
+        val_ds = torch.load("./data/processed/validation_dataset.pkl")
         return DataLoader(val_ds, batch_size=self.batch_size)
 
     def accuracy(self, preds, labels):
