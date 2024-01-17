@@ -7,7 +7,8 @@ import numpy as np
 
 
 class SimpleCNN(LightningModule):
-    def __init__(self, lr=1e-3, batch_size=64):
+    def __init__(self, lr: float = 1e-3, batch_size: int = 64, seed: int = 42):
+        torch.manual_seed(seed)  # have to be also added to conf
         super().__init__()
         # Save hyperparams and log them in wandb
         self.save_hyperparameters("lr", "batch_size")
@@ -90,15 +91,15 @@ class SimpleCNN(LightningModule):
         return optim.Adam(self.parameters(), lr=self.lr)
 
     def train_dataloader(self):
-        train_ds = torch.load("../data/processed/train_dataset.pkl")
+        train_ds = torch.load("./data/processed/train_dataset.pkl")
         return DataLoader(train_ds, batch_size=self.batch_size)
 
     def test_dataloader(self):
-        test_ds = torch.load("../data/processed/test_dataset.pkl")
+        test_ds = torch.load("./data/processed/test_dataset.pkl")
         return DataLoader(test_ds, batch_size=self.batch_size)
 
     def val_dataloader(self):
-        val_ds = torch.load("../data/processed/validation_dataset.pkl")
+        val_ds = torch.load("./data/processed/validation_dataset.pkl")
         return DataLoader(val_ds, batch_size=self.batch_size)
 
     def accuracy(self, preds, labels):

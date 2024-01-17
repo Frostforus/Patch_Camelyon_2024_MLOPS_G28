@@ -1,5 +1,5 @@
 import torch
-from Patch_Camelyon_2024_MLOPS_G28.models.model import SimpleCNN
+from patch_camelyon_2024_mlops_g28.models.model import SimpleCNN
 
 
 torch.manual_seed(42)

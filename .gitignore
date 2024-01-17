@@ -5,6 +5,7 @@ lightning_logs/*
 docs/site/
 wandb/*
 Patch_Camelyon_MLOps_WandB
+models/
 
 # test cache
 manual_test/
@@ -183,7 +184,12 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-/data
+/data/*/*
+!/data/raw/.gitkeep
+!/data/processed/.gitkeep
+!/data/predictions/.gitkeep
 wandb
 Patch_Camelyon_MLOps_G28/wandb
 models/*
+Patch_Camelyon_MLOps_G28/outputs
+outputs
