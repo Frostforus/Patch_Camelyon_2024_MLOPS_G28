@@ -14,4 +14,4 @@ if os.path.exists(DATA_PDW):
 
 @pytest.mark.skipif(not os.path.exists(DATA_PDW), reason="Data file not found")
 def test_prediction_function():
-    assert predict(model=NETWORK, dataloader=DATALOADER).shape == (len(DATASET), 2)
+    assert predict(model=NETWORK, dataloader=DATALOADER).shape == torch.Size([len(DATASET)])
