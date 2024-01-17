@@ -48,13 +48,13 @@ def main(modelpath, datapath):
         print(f'File format not suported: {datafile.split(".")[-1]}')
         raise Exception(f'File format not suported: {datafile.split(".")[-1]}')
     preds = predict(model, DataLoader(PredictionDataset(data), batch_size=64))
-    torch.save(preds, f"./data/predictions/predictions_{os.path.basename(datafile).split('.')[0]}.pt")
     print(f"Predictions: {preds.tolist()}")
     return preds
 
 
 if __name__ == "__main__":
     if len(sys.argv) == 3:
-        main(*sys.argv[1:])
+        preds = main(*sys.argv[1:])
+        torch.save(preds, f"./data/predictions/predictions_{os.path.basename(sys.argv[1]).split('.')[0]}.pt")
     else:
         print("Incorrect usage of script arguments")
