@@ -8,8 +8,7 @@ model:
 trainer:
   max_epochs: 10
   limit_train_batches: 0.2
-  cpu_accelerator: cpu
-  gpu_accelerator: gpu
+  gpu_accelerator: True
   check_val_every_n_epoch: 2
   accumulate_grad_batches: 1
   gradient_clip_val: 0.5

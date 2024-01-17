@@ -7,13 +7,13 @@ import numpy as np
 
 
 class SimpleCNN(LightningModule):
-    def __init__(self, lr: float = 1e-3, batch_size: int = 64):
+    def __init__(self, lr: float = 1e-3, batch_size: int = 64, seed: int = 42):
+        torch.manual_seed(seed)  # have to be also added to conf
         super().__init__()
         # Save hyperparams and log them in wandb
         self.save_hyperparameters("lr", "batch_size")
         self.lr = lr
         self.batch_size = batch_size
-        torch.manual_seed(42) #have to be also added to conf
 
         self.loss_fn = nn.CrossEntropyLoss()
         self.convnet = nn.Sequential(
