@@ -59,7 +59,7 @@ The directory structure of the project looks like this:
 │
 ├── tests                <- Test files
 │
-├── patch_camelyon_2024_mlops_g28  <- Source code for use in this project.
+├── Patch_Camelyon_2024_MLOPS_G28  <- Source code for use in this project.
 │   │
 │   ├── __init__.py      <- Makes folder a Python module
 │   │

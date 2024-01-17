@@ -1,2 +1,2 @@
-from patch_camelyon_2024_mlops_g28.models.model import SimpleCNN
-from patch_camelyon_2024_mlops_g28.predict_model import predict
+from Patch_Camelyon_2024_MLOPS_G28.models.model import SimpleCNN
+from Patch_Camelyon_2024_MLOPS_G28.predict_model import predict
