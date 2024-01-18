@@ -65,7 +65,7 @@ class PredictionModel:
         if image:
             image = self._resize_image(image)
             # Convert image to tensor and add batch dimension,
-            #TODO: swtich this with the correct predict function
+            # TODO: swtich this with the correct predict function
             prediction = self.model.predict(image)
             return prediction
         else:
@@ -93,3 +93,8 @@ async def predict_from_image(image: UploadFile = File(...)):
     except Exception as e:
         print("Error occurred during prediction: ", e)
         return {"message": "Error occurred during prediction: " + str(e), "status": HTTPStatus.IM_A_TEAPOT}
+
+
+@app.get("/ping")
+async def ping():
+    return {"message": "pong", "status": HTTPStatus.OK}

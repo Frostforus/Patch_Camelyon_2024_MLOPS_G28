@@ -15,4 +15,4 @@ COPY app/backend/ app/backend/
 WORKDIR app/backend/
 RUN pip install -r requirements.txt --no-cache-dir
 
-ENTRYPOINT ["python", "-m", "uvicorn app.backend.main:app", "--reload","--port $PORT"]
+CMD exec uvicorn app_backend_main:app --port $PORT --host 0.0.0.0 --workers 1
