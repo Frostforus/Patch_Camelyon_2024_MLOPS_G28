@@ -36,19 +36,23 @@ The directory structure of the project looks like this:
 │   ├── processed        <- The final, canonical data sets for modeling.
 │   └── raw              <- The original, immutable data dump.
 │
-├── docs                 <- Documentation folder
+├── source               <- Source directory for documentation files
 │   │
 │   ├── index.md         <- Homepage for your documentation
 │   │
-│   ├── mkdocs.yml       <- Configuration file for mkdocs
+|   ├── make_dataset.md
 │   │
-│   └── source/          <- Source directory for documentation files
+|   ├── model.md
+│   │
+|   └── predictions.md
 │
 ├── models               <- Trained and serialized models, model predictions, or model summaries
 │
 ├── notebooks            <- Jupyter notebooks.
 │
 ├── pyproject.toml       <- Project configuration file
+|
+├── mkdocs.yml           <- Configuration file for mkdocs
 │
 ├── reports              <- Generated analysis as HTML, PDF, LaTeX, etc.
 │   └── figures          <- Generated graphics and figures to be used in reporting
