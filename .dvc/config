@@ -1,5 +1,0 @@
-[core]
-    remote = remote_storage
-['remote "storage"']
-    url = gs://ml-ops-data-bucket/
-    version_aware = true
