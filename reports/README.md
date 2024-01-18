@@ -104,8 +104,7 @@ end of the project.
 > **Enter the group number you signed up on <learn.inside.dtu.dk>**
 >
 > Answer:
-
---- question 1 fill here ---
+Group 28
 
 ### Question 2
 > **Enter the study number for each member in the group**
@@ -116,7 +115,7 @@ end of the project.
 >
 > Answer:
 
---- question 2 fill here ---
+s201758, s223407, s232457, s230234, s230243
 
 ### Question 3
 > **What framework did you choose to work with and did it help you complete the project?**
