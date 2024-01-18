@@ -2,6 +2,12 @@ outs:
 - hash: md5
   path: data
   files:
+  - relpath: predictions/.dvckeep
+    md5: d41d8cd98f00b204e9800998ecf8427e
+    size: 0
+  - relpath: processed/.dvckeep
+    md5: d41d8cd98f00b204e9800998ecf8427e
+    size: 0
   - relpath: processed/test_dataset.pkl
     md5: fb84a2bb32964558de08a8a63bd4e4b8
     size: 3623922870
@@ -37,6 +43,9 @@ outs:
       storage:
         etag: 08e5cabbb2dde783031001
         version_id: '1705608123180389'
+  - relpath: raw/.dvckeep
+    md5: d41d8cd98f00b204e9800998ecf8427e
+    size: 0
   - relpath: raw/camelyonpatch_level_2_split_test_meta.csv
     md5: 3455fd69135b66734e1008f3af684566
     size: 1608584
@@ -107,3 +116,6 @@ outs:
       remote_storage:
         etag: 08c2e0dcb3b8dd83031001
         version_id: '1705254596325442'
+  - relpath: testFiles/.dvckeep
+    md5: d41d8cd98f00b204e9800998ecf8427e
+    size: 0
