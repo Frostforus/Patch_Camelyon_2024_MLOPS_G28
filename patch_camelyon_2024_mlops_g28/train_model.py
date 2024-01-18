@@ -6,7 +6,7 @@ import hydra
 from google.cloud import storage
 import os
 
-from patch_camelyon_2024_mlops_g28.models.model import SimpleCNN
+from models.model import SimpleCNN
 
 
 # config hydra
