@@ -3,8 +3,14 @@ outs:
   path: data
   files:
   - relpath: .DS_Store
-    md5: 8c0edb9c27885e06087a97f0c18b5c0c
-    size: 6148
+    md5: 73d09606e7730d98722dbc7068353751
+    size: 8196
+  - relpath: predictions/.gitkeep
+    md5: d41d8cd98f00b204e9800998ecf8427e
+    size: 0
+  - relpath: processed/.gitkeep
+    md5: d41d8cd98f00b204e9800998ecf8427e
+    size: 0
   - relpath: processed/test_dataset.pkl
     md5: 8723679ab8c164052b2eb02350cf245e
     size: 3623922870
@@ -15,8 +21,11 @@ outs:
     md5: 13da15a1758b7e50772bef1e70df73c2
     size: 3623922906
   - relpath: raw/.DS_Store
-    md5: 0412681e04f2a2bb8a1203837ad5cfec
-    size: 6148
+    md5: 2cb782e9caa37630016fb6db8d6c534a
+    size: 8196
+  - relpath: raw/.gitkeep
+    md5: d41d8cd98f00b204e9800998ecf8427e
+    size: 0
   - relpath: raw/camelyonpatch_level_2_split_valid_x.h5.gz
     md5: d5b63470df7cfa627aeec8b9dc0c066e
     size: 805965320
@@ -31,3 +40,6 @@ outs:
       remote_storage:
         etag: 08c2e0dcb3b8dd83031001
         version_id: '1705254596325442'
+  - relpath: testFiles/.gitkeep
+    md5: d41d8cd98f00b204e9800998ecf8427e
+    size: 0
