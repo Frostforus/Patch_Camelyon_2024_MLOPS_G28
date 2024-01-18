@@ -81,7 +81,7 @@ The directory structure of the project looks like this:
 │   │
 │   ├── models                       <- model implementations, training script and prediction script
 │   │   ├── __init__.py
-│   │   ├── model.py
+│   │   └── model.py
 │   │
 │   ├── visualization                <- Scripts to create exploratory and results oriented visualizations
 │   │   ├── __init__.py
