@@ -2,6 +2,8 @@
 FROM python:3.11-slim
 LABEL authors="konrad"
 
+EXPOSE $PORT
+
 RUN apt-get update && apt-get install -y \
     build-essential \
     software-properties-common \
@@ -13,4 +15,4 @@ COPY app/backend/ app/backend/
 WORKDIR app/backend/
 RUN pip install -r requirements.txt --no-cache-dir
 
-ENTRYPOINT ["python", "-m", "uvicorn app.backend.main:app", "--reload","--port 8000"]
+ENTRYPOINT ["python", "-m", "uvicorn app.backend.main:app", "--reload","--port $PORT"]
