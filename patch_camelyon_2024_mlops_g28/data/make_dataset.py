@@ -5,9 +5,22 @@ import h5py
 import numpy as np
 import torch
 from torch.utils.data import TensorDataset, random_split
+import typing
 
 
-def h5gz_to_tensor(src: str, dest: str = None, images: bool = False):
+def h5gz_to_tensor(src: str, dest: str = None, images: bool = False) -> torch.Tensor:
+    """
+    Convers the data on the source path to a tensor and stores it on the destination path.
+
+    Args:
+        src: path to the source data file
+        dest: path to the destination data file
+        images: True for loading images and False for targets
+
+    Returns
+        A tensor of size (N,3,96,96) for Images == True or (N,1) else with the corresponding
+        images or targets in the source data file. WhereN >= 1.
+    """
     if dest is not None and os.path.exists(dest):
         ans = input(f"{src} is already processed, do you want to do it again? [y/n]: ")
         if ans.lower() not in ["y", "yes"]:
@@ -28,8 +41,23 @@ def h5gz_to_tensor(src: str, dest: str = None, images: bool = False):
                 return ds
 
 
-def main(data: torch.Tensor, targets: torch.Tensor):
-    # Ensure that the random split is always the same (but still 'random'
+def main(
+    data: torch.Tensor, targets: torch.Tensor
+) -> typing.Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+    """
+    Generates the data splits for the data.
+
+    Args:
+        data: tensor of shape (N, 3, 96, 96) where N >= 1 and N == X
+        targets: tensor of shape (X,1) where X >= 1 and X == N
+
+    Returns
+        A tuple of four tendors with the different data splits.
+        The first 3 tensors are of shape ([N,3,96,96],[N,1]) images and targets
+        and the last one is of shape (N,3,96,96) only images with no tagets.
+    """
+
+    # Ensure that the random split is always the same (but still 'random')
     torch.manual_seed(42)
 
     ds = TensorDataset(data, targets)
@@ -46,6 +74,9 @@ def main(data: torch.Tensor, targets: torch.Tensor):
 
 
 if __name__ == "__main__":
+    """
+    Gets the data splits and saves them locally.
+    """
     data = h5gz_to_tensor(src="./data/raw/camelyonpatch_level_2_split_valid_x.h5.gz", images=True)
     targets = h5gz_to_tensor(src="./data/raw/camelyonpatch_level_2_split_valid_y.h5.gz", images=False)
     train_ds, test_ds, val_ds, test_images = main(data, targets)
