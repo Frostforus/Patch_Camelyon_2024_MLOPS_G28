@@ -6,7 +6,7 @@ model:
   random_seed: 42
 
 trainer:
-  max_epochs: 1
+  max_epochs: 10
   limit_train_batches: 0.2
   gpu_accelerator: True
   check_val_every_n_epoch: 2
