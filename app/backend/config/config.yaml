@@ -1,8 +1,13 @@
 google_cloud:
   bucket_name : prediction-model-bucket
-  model_blob_name : trained_model_out.ckpt
+  model_blob_name : trained_model_out.pth
   key_file_name : ./config/prediction_model_bucket_service_account_key_file.json
-local_model_file_name : prediction_model.ckpt
-target_size:
+local:
+  model_dir : ./models
+  model_file_name : prediction_model.pth
+model:
+  force_download : False
+  input_dimensions:
     width: 300
     height: 300
+    channels: 3
