@@ -192,3 +192,4 @@ Patch_Camelyon_MLOps_G28/wandb
 models/*
 Patch_Camelyon_MLOps_G28/outputs
 outputs
+/data
