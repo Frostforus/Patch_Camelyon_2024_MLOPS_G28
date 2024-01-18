@@ -45,15 +45,15 @@ def train(cfg) -> None:
     trainer.fit(model)
 
     # Save the model locally first
-    local_checkpoint_path = "trained_model_out.pth"
-    torch.save(model.state_dict(), local_checkpoint_path)
+    local_checkpoint_path = "trained_model_out.pt"
+    torch.save(model, local_checkpoint_path)
 
     # Upload the model to Google Cloud Storage bucket
     bucket_name = "prediction-model-bucket"
     storage_client = storage.Client()
     bucket = storage_client.get_bucket(bucket_name)
 
-    blob = bucket.blob("trained_model_out.pth")
+    blob = bucket.blob("trained_model_out.pt")
     blob.upload_from_filename(local_checkpoint_path)
 
     # Delete the locally created file after uploading to the bucket
