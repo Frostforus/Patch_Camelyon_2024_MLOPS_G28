@@ -5,9 +5,9 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "patch_camelyon_2024_mlops_g28"
 version = "0.0.1"
-description = "A short description of the project."
+description = "CNN calssifier for MLOps at DTU."
 authors = [
-  { name = "MLOpsG28", email = "your@email.com" },
+  { name = "MLOpsG28" },
 ]
 license = { file = "LICENSE" }
 readme = "README.md"

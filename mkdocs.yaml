@@ -1,0 +1,21 @@
+site_name: Patch_camelyon_2024_mlops_g28
+site_url: https://patch_camelyon_2024_mlops_g28.com/
+site_author: MLOpsG28
+docs_dir: source
+
+theme:
+  language: en
+  name: material
+  features:
+    - content.code.copy
+    - content.code.annotate
+
+plugins:
+  - search
+  - mkdocstrings
+
+nav:
+  - Home: index.md
+  - model: model.md
+  - Make Dataset: make_dataset.md
+  - Predictions: predictions.md
