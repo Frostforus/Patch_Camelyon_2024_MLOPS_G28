@@ -2,21 +2,54 @@ outs:
 - hash: md5
   path: data
   files:
-  - relpath: .DS_Store
-    md5: 8c0edb9c27885e06087a97f0c18b5c0c
-    size: 6148
+  - relpath: predictions/.gitkeep
+    md5: d41d8cd98f00b204e9800998ecf8427e
+    size: 0
+  - relpath: processed/.gitkeep
+    md5: d41d8cd98f00b204e9800998ecf8427e
+    size: 0
   - relpath: processed/test_dataset.pkl
-    md5: 8723679ab8c164052b2eb02350cf245e
+    md5: fb84a2bb32964558de08a8a63bd4e4b8
     size: 3623922870
+  - relpath: processed/test_images.pt
+    md5: 60b67ae39a4b3350dd2075832263badd
+    size: 362300592
+  - relpath: processed/test_prediction_images.pt
+    md5: 5bf51fdbb59b005ffb47b676d5984d38
+    size: 362300711
   - relpath: processed/train_dataset.pkl
-    md5: 0b25adba982c8e100b157610483f1b06
+    md5: 706be659265188cab260b7d41fda3b4d
     size: 3623991548
   - relpath: processed/validation_dataset.pkl
-    md5: 13da15a1758b7e50772bef1e70df73c2
+    md5: d6b505c98a8c344e6b09bfd04bfab965
     size: 3623922906
-  - relpath: raw/.DS_Store
-    md5: 0412681e04f2a2bb8a1203837ad5cfec
-    size: 6148
+  - relpath: raw/.gitkeep
+    md5: d41d8cd98f00b204e9800998ecf8427e
+    size: 0
+  - relpath: raw/camelyonpatch_level_2_split_test_meta.csv
+    md5: 3455fd69135b66734e1008f3af684566
+    size: 1608584
+  - relpath: raw/camelyonpatch_level_2_split_test_x.h5.gz
+    md5: d8c2d60d490dbd479f8199bdfa0cf6ec
+    size: 800875929
+  - relpath: raw/camelyonpatch_level_2_split_test_y.h5.gz
+    md5: 60a7035772fbdb7f34eb86d4420cf66a
+    size: 3040
+  - relpath: raw/camelyonpatch_level_2_split_train_mask.h5.gz
+    md5: 2d46ab0bf4477cf521429d31545de1cf
+    size: 14482351
+  - relpath: raw/camelyonpatch_level_2_split_train_meta.csv
+    md5: 5a3dd671e465cfd74b5b822125e65b0a
+    size: 15047830
+  - relpath: raw/camelyonpatch_level_2_split_train_x.h5.gz
+    md5: 1571f514728f59376b705fc836ff4b63
+    size: 6421353462
+  - relpath: raw/camelyonpatch_level_2_split_train_y.h5.gz
+    md5: 35c2d7259d906cfc8143347bb8e05be7
+    size: 21378
+  - relpath: raw/camelyonpatch_level_2_split_valid_meta.csv
+    md5: 67589e00a4a37ec317f2d1932c7502ca
+    size: 1850810
   - relpath: raw/camelyonpatch_level_2_split_valid_x.h5.gz
     md5: d5b63470df7cfa627aeec8b9dc0c066e
     size: 805965320
@@ -31,3 +64,6 @@ outs:
       remote_storage:
         etag: 08c2e0dcb3b8dd83031001
         version_id: '1705254596325442'
+  - relpath: testFiles/.gitkeep
+    md5: d41d8cd98f00b204e9800998ecf8427e
+    size: 0
