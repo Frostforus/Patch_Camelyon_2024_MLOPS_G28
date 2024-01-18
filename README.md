@@ -30,11 +30,17 @@ The directory structure of the project looks like this:
 
 ```txt
 
-├── Makefile             <- Makefile with convenience commands like `make data` or `make train`
-├── README.md            <- The top-level README for developers using this project.
+├── .dvc                       <- Folder with all the relevan dvc files.
+├── .github
+│   └── workflows
+│   │   └── mainflow.yml       <- File to set up the github actions workflow.
+├── Makefile                   <- Makefile with convenience commands like `make data` or `make train`
+├── README.md                  <- The top-level README for developers using this project.
 ├── data
-│   ├── processed        <- The final, canonical data sets for modeling.
-│   └── raw              <- The original, immutable data dump.
+│   ├── predictions            <- The outputs of the model's inference.
+│   ├── processed              <- The final, canonical data sets for modeling.
+│   ├── raw                    <- The original, immutable data dump.
+│   └── testFiles              <- Data files strictly created for testing.
 │
 ├── source               <- Source directory for documentation files
 │   │
@@ -59,29 +65,46 @@ The directory structure of the project looks like this:
 │
 ├── requirements.txt     <- The requirements file for reproducing the analysis environment
 |
-├── requirements_dev.txt <- The requirements file for reproducing the analysis environment
+├── dockerfiles
+|   ├── cloudbuild.yaml           <- File for setting up docker in google cloud.
+|   └── train_model.dockerfile    <- File for running thge trining of the model on a docker container.
+|
+├── requirements_dev.txt             <- The requirements file for reproducing the analysis environment
 │
-├── tests                <- Test files
+├── tests                            <- Test files
+│   ├── data_test.py
+│   ├── model_test.py
+│   └── predict_test.py
 │
-├── patch_camelyon_2024_mlops_g28  <- Source code for use in this project.
+├── patch_camelyon_2024_mlops_g28    <- Source code for use in this project.
 │   │
-│   ├── __init__.py      <- Makes folder a Python module
+│   ├── __init__.py                  <- Makes folder a Python module
 │   │
-│   ├── data             <- Scripts to download or generate data
+│   ├── data                         <- Scripts to download or generate data
 │   │   ├── __init__.py
 │   │   └── make_dataset.py
 │   │
-│   ├── models           <- model implementations, training script and prediction script
+│   ├── models                       <- model implementations, training script and prediction script
 │   │   ├── __init__.py
-│   │   ├── model.py
+│   │   └── model.py
 │   │
-│   ├── visualization    <- Scripts to create exploratory and results oriented visualizations
+│   ├── visualization                <- Scripts to create exploratory and results oriented visualizations
 │   │   ├── __init__.py
 │   │   └── visualize.py
-│   ├── train_model.py   <- script for training the model
-│   └── predict_model.py <- script for predicting from a model
+│   ├── train_model.py               <- script for training the model
+│   └── predict_model.py             <- script for predicting from a model
 │
-└── LICENSE              <- Open-source license if one is chosen
+├── .dvcignore
+│
+├── .gitignore
+│
+├── .pre-commit-config.yaml
+│
+├── data.dvc
+│
+├── docker-compose.yaml
+│
+└── LICENSE                          <- Open-source license if one is chosen
 ```
 
 Created using [mlops_template](https://github.com/SkafteNicki/mlops_template),
