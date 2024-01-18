@@ -27,8 +27,10 @@ class PredictionModel:
             self.model_input_dimensions = {"height": configs['model']['input_dimensions']['height'],
                                            "width": configs['model']['input_dimensions']['width'],
                                            "channels": configs['model']['input_dimensions']['channels']}
-
-        self._load_model(configs['model']['force_download'])
+        try:
+            self._load_model(configs['model']['force_download'])
+        except Exception as e:
+            print("Error occurred during model loading: ", e)
 
     def _download_model_from_blob(self):
         """Downloads a blob from the bucket."""
@@ -43,7 +45,7 @@ class PredictionModel:
     def _load_model(self, force_download=False):
         # List model files in the current directory,
         files = [self.destination_dir_path + '/' + model_file_name for model_file_name in
-                 os.listdir(self.destination_dir_path) if model_file_name.endswith(".pth")]
+                 os.listdir(self.destination_dir_path) if model_file_name.endswith(".pt")]
         if len(files) == 0 or force_download:
             print("No local model found. Downloading model from GCS.")
             self._download_model_from_blob()

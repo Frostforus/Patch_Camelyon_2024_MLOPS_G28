@@ -1,10 +1,10 @@
 google_cloud:
   bucket_name : prediction-model-bucket
-  model_blob_name : trained_model_out.pth
+  model_blob_name : trained_model_out.pt
   key_file_name : ./config/prediction_model_bucket_service_account_key_file.json
 local:
   model_dir : ./models
-  model_file_name : prediction_model.pth
+  model_file_name : prediction_model.pt
 model:
   force_download : False
   input_dimensions:
