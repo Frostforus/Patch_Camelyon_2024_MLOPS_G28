@@ -1,14 +1,12 @@
-# conf/config.yaml
-
 model:
-  lr: 1e-3
+  lr: 0.001
   batch_size: 16
   random_seed: 42
-
 trainer:
-  max_epochs: 1
+  max_epochs: 10
   limit_train_batches: 0.2
-  gpu_accelerator: True
+  cpu_accelerator: cpu
+  gpu_accelerator: true
   check_val_every_n_epoch: 2
   accumulate_grad_batches: 1
   gradient_clip_val: 0.5

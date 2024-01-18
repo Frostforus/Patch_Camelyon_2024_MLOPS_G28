@@ -51,6 +51,7 @@ def train(cfg):
     # Delete the locally created file after uploading to the bucket
     os.remove(local_checkpoint_path)
 
+    
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     train()
