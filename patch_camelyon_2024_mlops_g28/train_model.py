@@ -5,12 +5,19 @@ import hydra
 from google.cloud import storage
 import os
 
-from models.model import SimpleCNN
+from patch_camelyon_2024_mlops_g28.models.model import SimpleCNN
 
 
 # config hydra
 @hydra.main(config_path="conf", config_name="config", version_base="1.2")
-def train(cfg):
+def train(cfg) -> None:
+    """
+    Defined a model, trains it based on the parameters on the config file and
+    stores it in a google cloud data bucket.
+
+    Args:
+        cfg: hydra specific class with all parameters from the config.yaml file.
+    """
     # Set random seeds for reproducibility
     torch.manual_seed(cfg.model.random_seed)
 

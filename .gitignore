@@ -185,10 +185,10 @@ cython_debug/
 #.idea/
 
 /data/*/*
-!/data/raw/.gitkeep
-!/data/processed/.gitkeep
-!/data/predictions/.gitkeep
+!/data/*/.gitkeep
+
 wandb
 Patch_Camelyon_MLOps_G28/wandb
+models/*
 Patch_Camelyon_MLOps_G28/outputs
 outputs
