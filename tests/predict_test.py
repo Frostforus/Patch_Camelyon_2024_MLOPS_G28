@@ -55,15 +55,19 @@ def test_prediction_function():
 
 @pytest.mark.skipif(not os.path.exists(PKL_PDW) or not os.path.exists(MODEL_PDW), reason="Data file not found")
 def test_main_function_PKL():
-    assert main(MODEL_PDW, PKL_PDW).shape == torch.Size([10])
+    assert main(MODEL_PDW, PKL_PDW).shape == torch.Size(
+        [10]
+    )  # The predictions from the main function with a .pkl file do not have the correct shape
 
 
 @pytest.mark.skipif(not os.path.exists(PT_PDW) or not os.path.exists(MODEL_PDW), reason="Data file not found")
 def test_main_function_PT():
-    assert main(MODEL_PDW, PT_PDW).shape == torch.Size([10])
+    assert main(MODEL_PDW, PT_PDW).shape == torch.Size(
+        [10]
+    )  # The predictions from the main function with a .pt file do not have the correct shape
 
 
 @pytest.mark.skipif(not os.path.exists(OTHER_PDW) or not os.path.exists(MODEL_PDW), reason="Data file not found")
 def test_main_function_other():
     with pytest.raises(Exception):
-        main(MODEL_PDW, OTHER_PDW)
+        main(MODEL_PDW, OTHER_PDW)  # The main function di not throw the exception for an unsuported file extension
