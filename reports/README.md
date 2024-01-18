@@ -162,7 +162,7 @@ s201758, s223407, s232457, s230234, s230243
 > *experiments.*
 > Answer:
 
---- question 5 fill here ---
+We have used the cookiecutter template as our base template. We were using the folders it provided however, we added some extra for our project and left some of the folders empty. For example, regarding the docker files we have created another folder in the root to store them together with the cloudbuild.yaml file for the cloud trigger.
 
 ### Question 6
 
