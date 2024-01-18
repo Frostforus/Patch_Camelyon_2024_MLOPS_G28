@@ -8,12 +8,13 @@ from google.cloud import storage
 import cv2
 import numpy as np
 
+from models.model import SimpleCNN
 
 class PredictionModel:
     def __init__(self,
                  yaml_file_path='./config/config.yaml'
                  ):
-        self.model = None
+        self.model = SimpleCNN()
 
         # Load configurations from the YAML file
         with open(yaml_file_path, 'r') as file:
@@ -45,7 +46,7 @@ class PredictionModel:
     def _load_model(self, force_download=False):
         # List model files in the current directory,
         files = [self.destination_dir_path + '/' + model_file_name for model_file_name in
-                 os.listdir(self.destination_dir_path) if model_file_name.endswith(".pt")]
+                 os.listdir(self.destination_dir_path) if model_file_name.endswith(".pth")]
         if len(files) == 0 or force_download:
             print("No local model found. Downloading model from GCS.")
             self._download_model_from_blob()
@@ -53,21 +54,24 @@ class PredictionModel:
             print(f"Local model found, loading from file: {self.destination_file_path}")
 
         # Load the model from local file, and enable eval mode, to disable randomness and dropout
-        self.model = torch.load(self.destination_file_path)
+        self.model.load_state_dict(torch.load(self.destination_file_path))
         self.model.eval()
 
     def _resize_image(self, image: UploadFile):
         contents = image.file.read()
         image_array = cv2.imdecode(np.frombuffer(contents, np.uint8), cv2.IMREAD_COLOR)
-        return cv2.resize(image_array, self.model_input_dimensions)
+        size = (self.model_input_dimensions["width"], self.model_input_dimensions["height"])
+        return cv2.resize(image_array, size)
 
     def predict(self, image: UploadFile = None):
+        prediction_to_string = {0: "Benign", 1: "Malignant"}
         if image:
+            # Resize image and convert to tensor.
             image = self._resize_image(image)
-            # Convert image to tensor and add batch dimension,
-            # TODO: swtich this with the correct predict function
-            prediction = self.model.predict(image)
-            return prediction
+            image = torch.tensor(image).float().unsqueeze(0)
+            image = torch.transpose(image, 1, 3)
+            prediction = self.model(image).argmax(dim=-1).item()
+            return prediction_to_string[prediction]
         else:
             return "No image provided."
 
