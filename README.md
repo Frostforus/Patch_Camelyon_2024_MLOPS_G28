@@ -37,32 +37,37 @@ The directory structure of the project looks like this:
 ├── Makefile                   <- Makefile with convenience commands like `make data` or `make train`
 ├── README.md                  <- The top-level README for developers using this project.
 ├── data
-│   ├── predictions             <- The outputs of the model's inference.
-│   ├── processed                <- The final, canonical data sets for modeling.
-│   ├── raw                      <- The original, immutable data dump.
-│   └── testFiles                <- Data files strictly created for testing.
+│   ├── predictions            <- The outputs of the model's inference.
+│   ├── processed              <- The final, canonical data sets for modeling.
+│   ├── raw                    <- The original, immutable data dump.
+│   └── testFiles              <- Data files strictly created for testing.
+│
+├── source               <- Source directory for documentation files
+│   │
+│   ├── index.md         <- Homepage for your documentation
+│   │
+|   ├── make_dataset.md
+│   │
+|   ├── model.md
+│   │
+|   └── predictions.md
+│
+├── models               <- Trained and serialized models, model predictions, or model summaries
+│
+├── notebooks            <- Jupyter notebooks.
+│
+├── pyproject.toml       <- Project configuration file
+|
+├── mkdocs.yml           <- Configuration file for mkdocs
+│
+├── reports              <- Generated analysis as HTML, PDF, LaTeX, etc.
+│   └── figures          <- Generated graphics and figures to be used in reporting
+│
+├── requirements.txt     <- The requirements file for reproducing the analysis environment
 |
 ├── dockerfiles
 |   ├── cloudbuild.yaml           <- File for setting up docker in google cloud.
 |   └── train_model.dockerfile    <- File for running thge trining of the model on a docker container.
-|
-├── docs                           <- Documentation folder
-│   │
-│   ├── mkdocs.yml                  <- Configuration file for mkdocs
-│   │
-│   └── source/                     <- Source directory for documentation files
-│       └── index.md                <- Homepage for your documentation
-│
-├── models                           <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks                        <- Jupyter notebooks.
-│
-├── pyproject.toml                   <- Project configuration file
-│
-├── reports                          <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures                      <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt                 <- The requirements file for reproducing the analysis environment
 |
 ├── requirements_dev.txt             <- The requirements file for reproducing the analysis environment
 │
