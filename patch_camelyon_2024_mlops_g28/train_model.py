@@ -6,7 +6,7 @@ import hydra
 from google.cloud import storage
 import os
 
-from models.model import SimpleCNN
+from patch_camelyon_2024_mlops_g28.models.model import SimpleCNN
 
 
 # config hydra
@@ -25,7 +25,8 @@ def train(cfg) -> None:
     #Set hyperaparameters
     model = SimpleCNN(
         lr=cfg.model.lr,
-        batch_size=cfg.model.batch_size
+        batch_size=cfg.model.batch_size,
+        seed=cfg.model.random_seed
     )
     # Set up logging with WandB
     wandb_logger = WandbLogger(log_model=True, project='Patch_Camelyon_MLOps_WandB')
