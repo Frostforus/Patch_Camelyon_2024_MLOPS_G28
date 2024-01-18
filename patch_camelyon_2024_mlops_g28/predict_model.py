@@ -19,7 +19,8 @@ def predict(model: torch.nn.Module, dataloader: torch.utils.data.DataLoader) -> 
 
 
 class PredictionDataset(Dataset):
-    """Torch's Dataset class specialization for inderence.
+    """
+    Torch's Dataset class specialization for inderence.
 
     ...
 
@@ -38,20 +39,22 @@ class PredictionDataset(Dataset):
     """
 
     def __init__(self, data: torch.Tensor) -> None:
-        """Asign the input Data to the attribute data unsqueezing
+        """
+        Asign the input Data to the attribute data unsqueezing
         if the data is unbathed (single images)
 
         Args:
-            data: tensor of (x,3,96,96) or (3,96,96) images"""
+            data: tensor of (x,3,96,96) or (3,96,96) images
+        """
         self.data = data if data.ndim > 3 else data.unsqueeze(dim=0)
 
     def __len__(self) -> int:
-        """Overwrites the length method of the class so it returns the
-        length value of its data atribute"""
+        """Overwrites the length method of the class so it returns the length value of its data atribute"""
         return len(self.data)
 
     def __getitem__(self, idx: int) -> torch.Tensor:
-        """Overwrites the getitem method of the class so it returns the
+        """
+        Overwrites the getitem method of the class so it returns the
         element of the input index (idx) of the classes data attribute.
 
         Args:

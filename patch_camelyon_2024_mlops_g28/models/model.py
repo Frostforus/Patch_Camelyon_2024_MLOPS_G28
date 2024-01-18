@@ -7,7 +7,8 @@ import numpy as np
 
 
 class SimpleCNN(LightningModule):
-    """CNN model implmentation based on pytorch_lightning's LightningModule class
+    """
+    CNN model implmentation based on pytorch_lightning's LightningModule class
      ...
 
     Attributes
@@ -70,11 +71,11 @@ class SimpleCNN(LightningModule):
 
     accuracy(preds: torch.Tensor, labels: torch.Tensor):
         Calculates and returns the accuracy of the model.
-
     """
 
     def __init__(self, lr: float = 1e-3, batch_size: int = 64, seed: int = 42) -> None:
-        """Defined the classes attributes as well as the shape and parameters of the
+        """
+        Defined the classes attributes as well as the shape and parameters of the
         CNN model. Also manages the logging of hyperparameters and metrics on wandb.
 
         Args:
@@ -116,7 +117,8 @@ class SimpleCNN(LightningModule):
         self.val_epoch_accuracies = []
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """Applies a forward pass of the model to a given input and outputs the
+        """
+        Applies a forward pass of the model to a given input and outputs the
         model's predictions for it.
 
         Args:
@@ -128,7 +130,8 @@ class SimpleCNN(LightningModule):
         return self.linear(self.convnet(x))
 
     def training_step(self, batch: torch.Tensor) -> torch.Tensor:
-        """This function contains the code application for a step of the training process.
+        """
+        This function contains the code application for a step of the training process.
 
         Args:
             batch: input tensor of shape (N,3,96,96) where x >= 1
@@ -148,7 +151,8 @@ class SimpleCNN(LightningModule):
         return loss
 
     def validation_step(self, batch):
-        """This function contains the code application for a step of the validation process.
+        """
+        This function contains the code application for a step of the validation process.
 
         Args:
             batch: input tensor of shape (N,3,96,96) where x >= 1
@@ -191,34 +195,27 @@ class SimpleCNN(LightningModule):
         self.val_epoch_losses.clear()
 
     def configure_optimizers(self) -> torch.optim.Optimizer:
-        """
-        Returns the model's optimizer allways Adam's.
-        """
+        """Returns the model's optimizer allways Adam's."""
         return optim.Adam(self.parameters(), lr=self.lr)
 
     def train_dataloader(self) -> torch.utils.data.DataLoader:
-        """
-        Returns a torch's Dataloader class with the training data.
-        """
+        """Returns a torch's Dataloader class with the training data."""
         train_ds = torch.load("./data/processed/train_dataset.pkl")
         return DataLoader(train_ds, batch_size=self.batch_size)
 
     def test_dataloader(self) -> torch.utils.data.DataLoader:
-        """
-        Returns a torch's Dataloader class with the test data.
-        """
+        """Returns a torch's Dataloader class with the test data."""
         test_ds = torch.load("./data/processed/test_dataset.pkl")
         return DataLoader(test_ds, batch_size=self.batch_size)
 
     def val_dataloader(self) -> torch.utils.data.DataLoader:
-        """
-        Returns a torch's Dataloader class with the validation data.
-        """
+        """Returns a torch's Dataloader class with the validation data."""
         val_ds = torch.load("./data/processed/validation_dataset.pkl")
         return DataLoader(val_ds, batch_size=self.batch_size)
 
     def accuracy(self, preds: torch.Tensor, labels: torch.Tensor) -> torch.Tensor:
-        """Calculates the accuracy of the model.
+        """
+        Calculates the accuracy of the model.
 
         Args:
             preds: tensor of shape (N,1) where N >= 1 and N == X
