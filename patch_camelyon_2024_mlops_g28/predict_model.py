@@ -19,9 +19,25 @@ def predict(model: torch.nn.Module, dataloader: torch.utils.data.DataLoader) -> 
 
 
 class PredictionDataset(Dataset):
-    """Torch's Dataset class specialization for inderence."""
+    """Torch's Dataset class specialization for inderence.
 
-    def __init__(self, data) -> None:
+    ...
+
+    Attributes
+    ----------
+    data : tensor
+        data to be stored
+
+    Methods
+    -------
+    __len__():
+        returns the lenth of he data attribute.
+
+    __getitem__(idx: int):
+        returns a tensor of the element in the idx position of the tendor attribute data.
+    """
+
+    def __init__(self, data: torch.Tensor) -> None:
         """Asign the input Data to the attribute data unsqueezing
         if the data is unbathed (single images)
 

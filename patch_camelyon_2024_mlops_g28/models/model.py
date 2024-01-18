@@ -7,7 +7,71 @@ import numpy as np
 
 
 class SimpleCNN(LightningModule):
-    """CNN model implmentation based on pytorch_lightning's LightningModule class"""
+    """CNN model implmentation based on pytorch_lightning's LightningModule class
+     ...
+
+    Attributes
+    ----------
+    lr : float
+        learning rate
+
+    batch_size: int
+        batch size for training, balifation and testimg of the model
+
+    loss_fn: torch.nn.LossFunction
+        loss function for the model
+
+    convnet: torch.nn.Sequential
+        encoder of the CNN model
+
+    linear: torch.nn.Sequential
+        fully connected layers of the CNN model including output layer
+
+    train_epoch_losses: List
+        list of losses for batches on the training process
+
+    train_epoch_accuracies: List
+        list of accuracies for batches on the training process
+
+    val_epoch_losses: List
+        list of losses for batches on the validation process
+
+    val_epoch_accuracies: List
+        list of accuracies for batches on the validation process
+
+    Methods
+    -------
+    forward(x: torch.Tensor):
+        Applies a forward pass of the model to a given input and outputs the model's predictions for it.
+
+    training_step(batch: torch.Tensor):
+        Contains the code application for a step of the training process.
+
+    validation_step(batch: torch.Tensor):
+        Contains the code application for a step of the validation process.
+
+    on_train_epoch_end():
+        Logs in wandb the average train metrics, accuracy and loss, for all batches and clears their values afterwards.
+
+    on_validation_epoch_end():
+        Logs in wandb the average validation metrics, accuracy and loss, for all batches and clears their values afterwards.
+
+    configure_optimizers():
+        Returns the model's optimizer allways Adam's.
+
+    train_dataloader():
+        Returns a torch's Dataloader class with the training data.
+
+    test_dataloader():
+        Returns a torch's Dataloader class with the test data.
+
+    val_dataloader():
+        Returns a torch's Dataloader class with the validation data.
+
+    accuracy(preds: torch.Tensor, labels: torch.Tensor):
+        Calculates and returns the accuracy of the model.
+
+    """
 
     def __init__(self, lr: float = 1e-3, batch_size: int = 64, seed: int = 42) -> None:
         """Defined the classes attributes as well as the shape and parameters of the
@@ -15,7 +79,7 @@ class SimpleCNN(LightningModule):
 
         Args:
             lr: learning rate for the model's optimizer
-            batch_size: batch size for the model
+            batch_size: batch size for training, balifation and testimg of the model
             seed: seed for random initiallization od the weigths and bias
         """
         torch.manual_seed(seed)
@@ -134,7 +198,7 @@ class SimpleCNN(LightningModule):
 
     def train_dataloader(self) -> torch.utils.data.DataLoader:
         """
-        Returns a torch's Dataloader class with the trining data.
+        Returns a torch's Dataloader class with the training data.
         """
         train_ds = torch.load("./data/processed/train_dataset.pkl")
         return DataLoader(train_ds, batch_size=self.batch_size)
