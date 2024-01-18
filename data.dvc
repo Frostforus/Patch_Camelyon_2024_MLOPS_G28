@@ -3,11 +3,8 @@ outs:
   path: data
   files:
   - relpath: .DS_Store
-    md5: 07eae102246d2b4b6d46a2b9feb00f7d
+    md5: 8c0edb9c27885e06087a97f0c18b5c0c
     size: 6148
-  - relpath: processed/.DS_Store
-    md5: 8b873cc854a34f9878c5342e273ad464
-    size: 8196
   - relpath: processed/test_dataset.pkl
     md5: 8723679ab8c164052b2eb02350cf245e
     size: 3623922870
@@ -18,7 +15,7 @@ outs:
     md5: 13da15a1758b7e50772bef1e70df73c2
     size: 3623922906
   - relpath: raw/.DS_Store
-    md5: 29edb78750b3c7da1129ff3f6de2886e
+    md5: 0412681e04f2a2bb8a1203837ad5cfec
     size: 6148
   - relpath: raw/camelyonpatch_level_2_split_valid_x.h5.gz
     md5: d5b63470df7cfa627aeec8b9dc0c066e

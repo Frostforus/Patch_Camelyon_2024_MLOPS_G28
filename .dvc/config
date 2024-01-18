@@ -1,4 +1,4 @@
 [core]
-    remote = remote_storage
-['remote "remote_storage"']
-    url = ../ml-ops-data-bucket
+    remote = storage
+['remote "storage"']
+    url = gs://ml-ops-data-bucket/
