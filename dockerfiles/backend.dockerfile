@@ -10,9 +10,11 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+
 COPY app/backend/ app/backend/
 
 WORKDIR app/backend/
 RUN pip install -r requirements.txt --no-cache-dir
 
-CMD exec uvicorn main:app --port $PORT --host 0.0.0.0 --workers 1
+CMD exec uvicorn main:app --port 8080 --host 0.0.0.0 --workers 1
