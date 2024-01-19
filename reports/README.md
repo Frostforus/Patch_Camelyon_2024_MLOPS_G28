@@ -383,7 +383,7 @@ We used Cloud storage to store our data and models. We used Container Registry t
 > *using a custom container: ...*
 >
 > Answer:
-
+We leveraged the Compute Engine in GCP to facilitate the training of our models. Specifically, we utilized instances with the hardware configuration of n1-standard-4, featuring 4 virtual CPUs and 15 GB of memory. Our initial plan was to complete the entire training process using this setup. Unfortunately, unforeseen challenges arose as we encountered a shortage of credits, hindering the execution of the final training phase. Despite this setback, the Compute Engine played a pivotal role in supporting our model development, showcasing its importance in our cloud computing infrastructure.
 We used cloud engine to run the training of our models. We used the following hardware: n1-standard-4 (4 vCPUs, 15 GB memory).
 However sadly the final training couldn't be run on this due to a lack of credits
 
