@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
 
 COPY app/backend/ app/backend/
 
-COPY ../patch_camelyon_2024_mlops_g28/models app/backend/models
+COPY patch_camelyon_2024_mlops_g28/models app/backend/models
 
 WORKDIR app/backend/
 RUN pip install -r requirements.txt --no-cache-dir
