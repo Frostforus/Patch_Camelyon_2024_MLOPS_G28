@@ -8,7 +8,7 @@ ENV WANDB_API_KEY=792ab2b5bc699fe2e350a54f40aff67f76f00304
 RUN pip install dvc
 
 # Initialize DVC
-RUN dvc init
+RUN dvc init --no-scm
 
 RUN apt update && \
     apt install --no-install-recommends -y build-essential gcc && \
