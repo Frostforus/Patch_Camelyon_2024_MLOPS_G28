@@ -129,7 +129,7 @@ end of the project.
 >
 > Answer:
 
---- question 3 fill here ---
+In our project we used the pytorch framework complemented with pytorch-lightning to remove redundant boilerplate by using their pre-defined training loops. We used Weights and Biases for logging and storing the hyperparameters and metrics of all our training runs together online. Hydra was used for making a config file to control and keep track of all these hyperparameters. For data version control we used DVC, with remote storage set up in google cloud. This was also useful to be able to pull the data from GitHub for running unit tests with each push via the GitHub actions that we set up.
 
 ## Coding environment
 
@@ -148,7 +148,7 @@ end of the project.
 >
 > Answer:
 
---- question 4 fill here ---
+Throughout our development process, we have manually maintained 'requirements.txt' and 'requirements_dev.txt' files, updating them each time we introduced new modules or libraries. This being said, the pipreqs library could also be used to obtain the contents of both files in a single requirements file with the command 'pipreqs .', which scans the project's dependencies instead of taking all of the installed ones in the environment as pip freeze would do. However, this means that users will also have to install development libraries not necessary for running the project. To get a complete version of our development environment, one would just need to run 'pip install -r requirements.txt' and then 'pip install -r requirements_dev.txt'.
 
 ### Question 5
 
@@ -193,7 +193,7 @@ end of the project.
 >
 > Answer:
 
---- question 7 fill here ---
+In total we have implemented 21 tests over 3 testing files. These all make sure that the main scripts and functions in the project work correctly. Namely, we have a 'data_test.py' that tests the data processing from the 'make_dataset.py' script, a 'model_test.py' which tests the auxiliary of the  model class (like accuracy), and a 'predict_test.py' which tests that our prediction script works correctly on all the supported input types.
 
 ### Question 8
 
@@ -242,7 +242,7 @@ end of the project.
 
 ### Question 11
 
-> **Discuss you continues integration setup. What kind of CI are you running (unittesting, linting, etc.)? Do you test**
+> **Discuss your continues integration setup. What kind of CI are you running (unittesting, linting, etc.)? Do you test**
 > **multiple operating systems, python version etc. Do you make use of caching? Feel free to insert a link to one of**
 > **your github actions workflow.**
 >
@@ -288,7 +288,7 @@ end of the project.
 >
 > Answer:
 
---- question 13 fill here ---
+First of all, all hyperparameters used in training are entered through a Hydra configuration file, which automatically logs the parameters of each run. Aditionally, we pass all of these parameters to the Weights and Biases logger, so we also have these tied to the specific run metrics online, this way we know what parameters yielded what results. To ensure reproducibility when running with the same hyperparameters, we set a fixed seed for pytorch before generating the model, ensuring the same initial weights in each run. We also used the same seeding technique to always get the same dataset split when generating the processed dataset.
 
 ### Question 14
 
@@ -305,7 +305,12 @@ end of the project.
 >
 > Answer:
 
---- question 14 fill here ---
+![wandb hyperparams and results](figures/wandb_parameters_and_results.png)
+As seen in the first image, when we train a model, all of the used hyperparameters of the model (seed), dataloaders (batch size) trainer (learning rate, accumulated gradient batches, fraction of dataset used...) are uploaded to Weights and Biases into a new run's overview page. Here we can also see the overall results/metrics of the model when it finished training: Accuracy and loss over the training and validation sets and the number of epochs and steps taken.
+![wandb panels](figures/wandb_panel_overview.png)
+In the second image, we can see a more interesting view of how the training proceeded for the run. In this case we can see three manually generated graphs displaying the accuracy, loss and average accuracy per epoch of both the train and validation datasets in relation to the training steps or epochs. Below these are some other automatically generated graphs that are not visible in the screenshot. These give us a lot of insight on how the training went so that we can improve future models and hyperparameters: we can see if there is overfitting to the training set, if training stabilized, if there is a lot of fluctuation between epochs...
+![wandb stored model](figures/wandb_saved_model.png)
+Finally, we can see that after training is finished, the model checkpoint is also uploaded to Weights and Biases and tied to the run. This is great to be able to fall back on a model for which you know the results and metrics of, and even compare it to another run with the same parameters.
 
 ### Question 15
 
@@ -456,7 +461,7 @@ end of the project.
 > Example:
 >
 > *The starting point of the diagram is our local setup, where we integrated ... and ... and ... into our code.*
-> *Whenever we commit code and puch to github, it auto triggers ... and ... . From there the diagram shows ...*
+> *Whenever we commit code and push to github, it auto triggers ... and ... . From there the diagram shows ...*
 >
 > Answer:
 
@@ -491,4 +496,4 @@ end of the project.
 >
 > Answer:
 
---- question 27 fill here ---
+Student s223407 was in charge of setting up the model and training via pytorch and lightning as well as the train logging with WandB. Additionally helped with other tasks such as building docker images, setting up hydra config files, unit testing and triggers/actions.
