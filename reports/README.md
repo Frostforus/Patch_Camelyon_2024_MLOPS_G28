@@ -520,6 +520,6 @@ environment.
 
 -Student s201758 was in charge of making the config file and its implementation. Also he made the docker images with its trigger in the cloud to create a docker everytime a push to the main happens. Also worked on data bucket set up like for model saving, docker iages load etc.
 -Student s230243
--Student s232457
+-Student s232457 was in charge of setting up the gcp project. This included setting up the bucket, container registry, secret manager, cloud build and cloud run. He also set up the CI/CD pipeline, and the backend prediction server. Additionally he helped with integrating all the locally developed prats of the project onto the cloud, such as getting access to the gbucket, setting up triggers and cloud run, and misc support tasks regarding the cloud.
 -Student s223407 was in charge of setting up the model and training via pytorch and lightning as well as the train logging with WandB. Additionally helped with other tasks such as building docker images, setting up hydra config files, unit testing and triggers/actions.
 -Student s230234
