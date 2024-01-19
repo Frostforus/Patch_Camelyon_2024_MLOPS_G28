@@ -393,12 +393,9 @@ However sadly the final training couldn't be run on this due to a lack of credit
 > **You can take inspiration from [this figure](figures/bucket.png).**
 >
 > Answer:
-We used two buckets:
-![img.png](figures\img.png)
-The first one is used to store our data.
-![img_1.png](figures\img_1.png)
-The second one is used to store our models.
-![img_2.png](figures\img_2.png)
+
+![GCP Bucket screenshot 1](figures/bucket_screenshot_1.png)
+![GCP Bucket screenshot 2](figures/bucket_screenshot_2.png)
 
 ### Question 20
 
@@ -408,7 +405,7 @@ The second one is used to store our models.
 > Answer:
 
 
-![img_3.png](figures\img_3.png)
+![img_3.png](figures/img_3.png)
 
 
 ### Question 21
@@ -419,7 +416,7 @@ The second one is used to store our models.
 > Answer:
 
 
-![img_4.png](figures\img_4.png)
+![img_4.png](figures/img_4.png)
 
 
 ### Question 22
