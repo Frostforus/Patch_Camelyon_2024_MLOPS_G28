@@ -1,0 +1,18 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '.', '-f','dockerfiles/backend.dockerfile', '-t', 'gcr.io/ml-ops-ex/deployment/fastapibackend:latest']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/ml-ops-ex/deployment/fastapibackend:latest']
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args:
+  - 'run'
+  - 'deploy'
+  - 'prediction-model-deployment'
+  - '--image'
+  - 'gcr.io/ml-ops-ex/deployment/fastapibackend:latest'
+  - '--region'
+  - 'europe-north1'
+  - '--update-secrets=/etc/secret/prediction-gbucket-secret.json=prediction-gbucket-secret:latest'
+images:
+  - 'gcr.io/ml-ops-ex/deployment/fastapibackend:latest'
