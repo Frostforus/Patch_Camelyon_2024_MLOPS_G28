@@ -10,7 +10,7 @@ import numpy as np
 from fastapi.middleware.cors import CORSMiddleware
 
 origins = [
-    "frostforus.github.io",
+    "http://frostforus.github.io",
     "*", ]
 
 from models.model import SimpleCNN
