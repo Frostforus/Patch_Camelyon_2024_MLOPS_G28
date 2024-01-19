@@ -376,8 +376,8 @@ Yes, we push and pull our dataset using DVC, as the raw dataset is around 6GBs s
 >
 > Answer:
 
-![Google Cloud Bucket screenshot 1](figures/bucket_screenshot_1.png)
-![Google Cloud Bucket screenshot 2](figures/bucket_screenshot_2.png)
+![Google Cloud Bucket screenshot 1](figures/bucket_screenshot_1.png | width=200)
+![Google Cloud Bucket screenshot 2](figures/bucket_screenshot_2.png | width=200)
 
 ### Question 20
 
