@@ -28,6 +28,11 @@ class PredictionModel:
             self.model_input_dimensions = {"height": configs['model']['input_dimensions']['height'],
                                            "width": configs['model']['input_dimensions']['width'],
                                            "channels": configs['model']['input_dimensions']['channels']}
+
+            # If this exists, this script is running on the cloud, so override the key file path
+            if os.path.isfile(configs['google_cloud']['gcloud_secret_file']):
+                self.key_file_path = configs['google_cloud']['gcloud_secret_file']
+
         try:
             self._load_model(configs['model']['force_download'])
         except Exception as e:

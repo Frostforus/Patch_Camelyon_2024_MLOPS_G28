@@ -2,6 +2,7 @@ google_cloud:
   bucket_name : prediction-model-bucket
   model_blob_name : trained_model_out.pth
   key_file_name : ./config/prediction_model_bucket_service_account_key_file.json
+  gcloud_secret_file: /etc/secret/prediction-gbucket-secret.json
 local:
   model_dir : ./models
   model_file_name : prediction_model.pth

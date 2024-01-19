@@ -13,6 +13,6 @@ steps:
   - 'gcr.io/ml-ops-ex/:latest'
   - '--region'
   - ' europe-north1'
-  - '--update-secrets=/etc/secret/=prediction-gbucket-secret:latest'
+  - '--update-secrets=/etc/secret/prediction-gbucket-secret.json=prediction-gbucket-secret:latest'
 images:
   - 'gcr.io/your-project-id/your-image-name:your-tag'
