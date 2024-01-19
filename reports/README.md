@@ -105,7 +105,7 @@ end of the project.
 >
 > Answer:
 
---- question 1 fill here ---
+Group 28
 
 ### Question 2
 > **Enter the study number for each member in the group**
@@ -116,7 +116,7 @@ end of the project.
 >
 > Answer:
 
---- question 2 fill here ---
+s223407, s230243, s232457, s201758, s230234
 
 ### Question 3
 > **What framework did you choose to work with and did it help you complete the project?**
@@ -223,7 +223,7 @@ end of the project.
 >
 > Answer:
 
---- question 9 fill here ---
+Everyone had their own branches to work on separate tasks during the project. The main branch was protected, we have utilized pull request to merge the working code of the different tasks. To merge the new code to the main branch, it needed to pass all tests we wrote and at least another member had to approve it. This helped to maintain a working code in the main branch with clear commits of the new sections of the project. Of course, in the beginning we were not pros with git, sometimes we ran into conflicts when there was an overlap in what we have worked on. However, it was clearly a huge benefit to use git, as we have worked on very different tasks in the project and without git it would have been impossible to integrate all of it together.
 
 ### Question 10
 
@@ -238,7 +238,7 @@ end of the project.
 >
 > Answer:
 
---- question 10 fill here ---
+Yes, we push and pull our dataset using DVC, as the raw dataset is around 6GBs so it would not be possible using github. First we uploaded to data to our drive, but soon changed the storage and moved it to a GCP bucket. DVC made it very convenient to work with our large data files like git. However, we have not utilized version controlling that much, as we had one dataset which we worked with during the whole project. In the future, if we train new models using new datasets, it would be very beneficial that we can return to older dataset versions to investigate differences in the data and the models. As we understand it was also the proper way to manage data in our GCP bucket used for our GCP project.
 
 ### Question 11
 
@@ -376,7 +376,8 @@ end of the project.
 >
 > Answer:
 
---- question 19 fill here ---
+![Google Cloud Bucket screenshot 1](figures/bucket_screenshot_1.png)
+![Google Cloud Bucket screenshot 2](figures/bucket_screenshot_2.png)
 
 ### Question 20
 
