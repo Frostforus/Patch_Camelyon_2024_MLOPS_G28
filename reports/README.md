@@ -50,38 +50,38 @@ end of the project.
 
 ### Week 1
 
-* [ ] Create a git repository
-* [ ] Make sure that all team members have write access to the github repository
-* [ ] Create a dedicated environment for you project to keep track of your packages
-* [ ] Create the initial file structure using cookiecutter
-* [ ] Fill out the `make_dataset.py` file such that it downloads whatever data you need and
-* [ ] Add a model file and a training script and get that running
-* [ ] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
-* [ ] Remember to comply with good coding practices (`pep8`) while doing the project
-* [ ] Do a bit of code typing and remember to document essential parts of your code
-* [ ] Setup version control for your data or part of your data
-* [ ] Construct one or multiple docker files for your code
-* [ ] Build the docker files locally and make sure they work as intended
-* [ ] Write one or multiple configurations files for your experiments
-* [ ] Used Hydra to load the configurations and manage your hyperparameters
-* [ ] When you have something that works somewhat, remember at some point to to some profiling and see if
+* [x] Create a git repository
+* [x] Make sure that all team members have write access to the github repository
+* [x] Create a dedicated environment for you project to keep track of your packages
+* [x] Create the initial file structure using cookiecutter
+* [x] Fill out the `make_dataset.py` file such that it downloads whatever data you need and
+* [x] Add a model file and a training script and get that running
+* [x] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
+* [x] Remember to comply with good coding practices (`pep8`) while doing the project
+* [x] Do a bit of code typing and remember to document essential parts of your code
+* [x] Setup version control for your data or part of your data
+* [x] Construct one or multiple docker files for your code
+* [x] Build the docker files locally and make sure they work as intended
+* [x] Write one or multiple configurations files for your experiments
+* [x] Used Hydra to load the configurations and manage your hyperparameters
+* [x] When you have something that works somewhat, remember at some point to to some profiling and see if
       you can optimize your code
-* [ ] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
+* [x] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
       consider running a hyperparameter optimization sweep.
-* [ ] Use Pytorch-lightning (if applicable) to reduce the amount of boilerplate in your code
+* [x] Use Pytorch-lightning (if applicable) to reduce the amount of boilerplate in your code
 
 ### Week 2
 
-* [ ] Write unit tests related to the data part of your code
-* [ ] Write unit tests related to model construction and or model training
-* [ ] Calculate the coverage.
-* [ ] Get some continuous integration running on the github repository
-* [ ] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
-* [ ] Create a trigger workflow for automatically building your docker images
-* [ ] Get your model training in GCP using either the Engine or Vertex AI
-* [ ] Create a FastAPI application that can do inference using your model
+* [x] Write unit tests related to the data part of your code
+* [x] Write unit tests related to model construction and or model training
+* [x] Calculate the coverage.
+* [x] Get some continuous integration running on the github repository
+* [x] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
+* [x] Create a trigger workflow for automatically building your docker images
+* [~] Get your model training in GCP using either the Engine or Vertex AI
+* [x] Create a FastAPI application that can do inference using your model
 * [ ] If applicable, consider deploying the model locally using torchserve
-* [ ] Deploy your model in GCP using either Functions or Run as the backend
+* [x] Deploy your model in GCP using either Functions or Run as the backend
 
 ### Week 3
 
@@ -94,9 +94,9 @@ end of the project.
 
 ### Additional
 
-* [ ] Revisit your initial project description. Did the project turn out as you wanted?
-* [ ] Make sure all group members have a understanding about all parts of the project
-* [ ] Uploaded all your code to github
+* [x] Revisit your initial project description. Did the project turn out as you wanted?
+* [x] Make sure all group members have a understanding about all parts of the project
+* [x] Uploaded all your code to github
 
 ## Group information
 
@@ -129,7 +129,7 @@ s223407, s230243, s232457, s201758, s230234
 >
 > Answer:
 
---- question 3 fill here ---
+In our project we used the pytorch framework complemented with pytorch-lightning to remove redundant boilerplate by using their pre-defined training loops. We used Weights and Biases for logging and storing the hyperparameters and metrics of all our training runs together online. Hydra was used for making a config file to control and keep track of all these hyperparameters. For data version control we used DVC, with remote storage set up in google cloud. This was also useful to be able to pull the data from GitHub for running unit tests with each push via the GitHub actions that we set up.
 
 ## Coding environment
 
@@ -148,7 +148,7 @@ s223407, s230243, s232457, s201758, s230234
 >
 > Answer:
 
---- question 4 fill here ---
+Throughout our development process, we have manually maintained 'requirements.txt' and 'requirements_dev.txt' files, updating them each time we introduced new modules or libraries. This being said, the pipreqs library could also be used to obtain the contents of both files in a single requirements file with the command 'pipreqs .', which scans the project's dependencies instead of taking all of the installed ones in the environment as pip freeze would do. However, this means that users will also have to install development libraries not necessary for running the project. To get a complete version of our development environment, one would just need to run 'pip install -r requirements.txt' and then 'pip install -r requirements_dev.txt'.
 
 ### Question 5
 
@@ -163,7 +163,7 @@ s223407, s230243, s232457, s201758, s230234
 > *experiments.*
 > Answer:
 
---- question 5 fill here ---
+We have tried to follow the cookiecutter template and use it as the mainframe for our project. However, we have also implemented some new files to improve our workflow. For example, for docker we have created a separate folder that stores our docker files and the cloudbuild.yaml that makes the trigger event possible from the cloud. During implementing dvc we have also got files created regarding its set up like ".dvc" which has the config file, and data.dvc which defines the files from the data folder we wish to upload. Also our main data folder got located in the root in which we store our predictions, raw data, processed data etc. The original data folder from the template that is one level downer has our make_dataset.py which is going to produce our processed data from raw. We also added our reports folder in the root. When we are running the training of our model new folders are also appearing that are going to store the data from wandb.
 
 ### Question 6
 
@@ -174,7 +174,7 @@ s223407, s230243, s232457, s201758, s230234
 >
 > Answer:
 
---- question 6 fill here ---
+For code quality we have implemented a totla of 23 unit tests through the pytest framework. For code format we have complied with the PEP8 style guide, to ensure the commitment of the code with the standar we have implemented ruff in the precommit file and the ghithub actions run when doing pull requests to the main branch.
 
 ## Version control
 
@@ -193,7 +193,7 @@ s223407, s230243, s232457, s201758, s230234
 >
 > Answer:
 
---- question 7 fill here ---
+In total we have implemented 21 tests over 3 testing files. These all make sure that the main scripts and functions in the project work correctly. Namely, we have a 'data_test.py' that tests the data processing from the 'make_dataset.py' script, a 'model_test.py' which tests the auxiliary of the  model class (like accuracy), and a 'predict_test.py' which tests that our prediction script works correctly on all the supported input types.
 
 ### Question 8
 
@@ -204,11 +204,11 @@ s223407, s230243, s232457, s201758, s230234
 >
 > Example:
 > *The total code coverage of code is X%, which includes all our source code. We are far from 100% coverage of our **
-> *code and even if we were then...*
+> **
 >
 > Answer:
 
---- question 8 fill here ---
+The total code coverage of code is 72%, which includes all our source code which is all under the patch_camelyon_2024_mlops_g28 folder. We are relatively far from 100% coverage on our code and even if we were then there could still be problems that are not adressed as unit testing is only one out of many testing types. For instance it could be relevant for an automated project such as ours to implement integration and deployment tests, also given the ML nature of the project it could be interesting to make some ML specific tests that ensure the training process performs as expected.
 
 ### Question 9
 
@@ -242,7 +242,7 @@ Yes, we push and pull our dataset using DVC, as the raw dataset is around 6GBs s
 
 ### Question 11
 
-> **Discuss you continues integration setup. What kind of CI are you running (unittesting, linting, etc.)? Do you test**
+> **Discuss your continues integration setup. What kind of CI are you running (unittesting, linting, etc.)? Do you test**
 > **multiple operating systems, python version etc. Do you make use of caching? Feel free to insert a link to one of**
 > **your github actions workflow.**
 >
@@ -254,7 +254,9 @@ Yes, we push and pull our dataset using DVC, as the raw dataset is around 6GBs s
 >
 > Answer:
 
---- question 11 fill here ---
+We have organized our CI into 1 single file, .github/workflows/main_flow.yml, which builds three virtual machine with the three most common operating systems (windows, macos and ubuntu latest releases), build our python version of choice on them (3.8), installs the requiered dependencies through pip and our requirements.txt file, authenticates to a service account on our google cloud projects, for this porpouse we generated a guithub secret with the key to service account, and through data version control gets the raw data files from a data bucket on the google cloud project, finally the workflow runs the implemented unit tests, or skips them as some tests we decided to run exclusively on local to save on resources from the github actions servers, and runs lint through ruff on the whole code to double check that it adjusts to the PEP8 guidelines, automatically making any requiered modifications to it. Originaly the dvc system was not localted in a cloud data bucket but rather on google drive and the number of tests has increased during time so that explains why the fisrt runs of the workflow are different from the last ones.
+The workflow also includes the cache system that individually stores generates a cache file for each of the operating systems including both dependencies and data files within it to improve the performance of the future runs.
+For our project an example of a triggered workflow can be seen here: <https://github.com/Frostforus/Patch_Camelyon_2024_MLOPS_G28/actions/runs/7584267424>*
 
 ## Running code and tracking experiments
 
@@ -288,7 +290,7 @@ Yes, we push and pull our dataset using DVC, as the raw dataset is around 6GBs s
 >
 > Answer:
 
---- question 13 fill here ---
+First of all, all hyperparameters used in training are entered through a Hydra configuration file, which automatically logs the parameters of each run. Aditionally, we pass all of these parameters to the Weights and Biases logger, so we also have these tied to the specific run metrics online, this way we know what parameters yielded what results. To ensure reproducibility when running with the same hyperparameters, we set a fixed seed for pytorch before generating the model, ensuring the same initial weights in each run. We also used the same seeding technique to always get the same dataset split when generating the processed dataset.
 
 ### Question 14
 
@@ -305,7 +307,12 @@ Yes, we push and pull our dataset using DVC, as the raw dataset is around 6GBs s
 >
 > Answer:
 
---- question 14 fill here ---
+![wandb hyperparams and results](figures/wandb_parameters_and_results.png)
+As seen in the first image, when we train a model, all of the used hyperparameters of the model (seed), dataloaders (batch size) trainer (learning rate, accumulated gradient batches, fraction of dataset used...) are uploaded to Weights and Biases into a new run's overview page. Here we can also see the overall results/metrics of the model when it finished training: Accuracy and loss over the training and validation sets and the number of epochs and steps taken.
+![wandb panels](figures/wandb_panel_overview.png)
+In the second image, we can see a more interesting view of how the training proceeded for the run. In this case we can see three manually generated graphs displaying the accuracy, loss and average accuracy per epoch of both the train and validation datasets in relation to the training steps or epochs. Below these are some other automatically generated graphs that are not visible in the screenshot. These give us a lot of insight on how the training went so that we can improve future models and hyperparameters: we can see if there is overfitting to the training set, if training stabilized, if there is a lot of fluctuation between epochs...
+![wandb stored model](figures/wandb_saved_model.png)
+Finally, we can see that after training is finished, the model checkpoint is also uploaded to Weights and Biases and tied to the run. This is great to be able to fall back on a model for which you know the results and metrics of, and even compare it to another run with the same parameters.
 
 ### Question 15
 
@@ -320,7 +327,12 @@ Yes, we push and pull our dataset using DVC, as the raw dataset is around 6GBs s
 >
 > Answer:
 
---- question 15 fill here ---
+
+Docker was vital in this project as some of the training code and all of the backend was containerized, so that it could be deployed to cloud run.
+All of our dockerfiles can be found in the /dockerfiles/ directory.
+Regarding the server, we used a dockerfile to build the image, and then pushed it to the google cloud container registry, from where it was pulled and deployed to cloud run.
+This helped make sure that the server was always running the same code, and that it was easy to update it.
+Implementing the CI/CD pipeline was also made easier by using docker, as we could just build the image and push it to the registry, and then deploy it to cloud run.
 
 ### Question 16
 
@@ -335,7 +347,9 @@ Yes, we push and pull our dataset using DVC, as the raw dataset is around 6GBs s
 >
 > Answer:
 
---- question 16 fill here ---
+Initially our first approach was running the file with the error after printing any relevant information to the terminal, making some fixes and kept executing it this way until the problem was solved. While simple and intuitive this process proved to be slow and ineficient, and also carried the risk of leaving innecesary print statements on the code that could hinder the loggings and increase execution times, so taking into consideration that we all decided on using the Visual Studio Code interpreter we ended up opting for debugging the code through the use of it's built in debugger.
+For profiling we implemented the profiling.py file in wich we assesed the performance of the bigger functions through torch´s profiler app.
+The profiling stores the information for both GPU(only when available) and CPU, as well as storage (althou this proved to be useless given that we do not implement torch´s DataLoader class). We did find that our loading of the data is a botlle neck in resourcess and thought of tring to parallelizing this process but did not have time to implement this.
 
 ## Working in the cloud
 
@@ -352,7 +366,10 @@ Yes, we push and pull our dataset using DVC, as the raw dataset is around 6GBs s
 >
 > Answer:
 
---- question 17 fill here ---
+
+We used the following services: Cloud Storage, Container Registry, Secret Manager, Cloud Build and Cloud Run.
+We used Cloud storage to store our data and models. We used Container Registry to store our docker images. We used Secret Manager to store our credentials to the gbucket, and ultimately be able to use these secrets in our docker containers. We used Cloud Build to build our docker images, and deploy them to the cloud run instance. We used Cloud Run to deploy our backend prediction server.
+
 
 ### Question 18
 
@@ -367,7 +384,8 @@ Yes, we push and pull our dataset using DVC, as the raw dataset is around 6GBs s
 >
 > Answer:
 
---- question 18 fill here ---
+We used cloud engine to run the training of our models. We used the following hardware: n1-standard-4 (4 vCPUs, 15 GB memory).
+However sadly the final training couldn't be run on this due to a lack of credits
 
 ### Question 19
 
@@ -375,9 +393,12 @@ Yes, we push and pull our dataset using DVC, as the raw dataset is around 6GBs s
 > **You can take inspiration from [this figure](figures/bucket.png).**
 >
 > Answer:
-
-![Google Cloud Bucket screenshot 1](figures/bucket_screenshot_1.png)
-![Google Cloud Bucket screenshot 2](figures/bucket_screenshot_2.png)
+We used two buckets:
+![img.png](figures\img.png)
+The first one is used to store our data.
+![img_1.png](figures\img_1.png)
+The second one is used to store our models.
+![img_2.png](figures\img_2.png)
 
 ### Question 20
 
@@ -386,7 +407,9 @@ Yes, we push and pull our dataset using DVC, as the raw dataset is around 6GBs s
 >
 > Answer:
 
---- question 20 fill here ---
+
+![img_3.png](figures\img_3.png)
+
 
 ### Question 21
 
@@ -395,7 +418,9 @@ Yes, we push and pull our dataset using DVC, as the raw dataset is around 6GBs s
 >
 > Answer:
 
---- question 21 fill here ---
+
+![img_4.png](figures\img_4.png)
+
 
 ### Question 22
 
@@ -411,7 +436,9 @@ Yes, we push and pull our dataset using DVC, as the raw dataset is around 6GBs s
 >
 > Answer:
 
---- question 22 fill here ---
+Yes we could deploy our model to the cloud. By hosting our fastapi server with the cloud run service. We had some issues with this as GCP always had one more problem in each step when we fixed something, as evident from the build history.
+In the end we managed to create a server which can be invoked by sending a post request with the image, which in turn returns a prediction fro the picture.
+The frontend however that we host on the githubpages doesn't work because of some cors error, and a new insecure error, as it complains about the requested url being served over http, instead of https, however we couldn't find a way to fix this.
 
 ### Question 23
 
@@ -440,7 +467,9 @@ Yes, we push and pull our dataset using DVC, as the raw dataset is around 6GBs s
 >
 > Answer:
 
---- question 24 fill here ---
+
+We have used quite many as one of our group members ran out of his initial 50 free credits. As we looked into the reason behind we saw that data storage used lots of credit where we still did not find out the exact reason. What we saw, was that one day we had very extensive data loads periodically so maybe we forgot to turn off in our training file to upload always the data and model after each run. And as we debugged a lot, probably after each run it used cloud to upload the data.
+
 
 ## Overall discussion of project
 
@@ -457,7 +486,7 @@ Yes, we push and pull our dataset using DVC, as the raw dataset is around 6GBs s
 > Example:
 >
 > *The starting point of the diagram is our local setup, where we integrated ... and ... and ... into our code.*
-> *Whenever we commit code and puch to github, it auto triggers ... and ... . From there the diagram shows ...*
+> *Whenever we commit code and push to github, it auto triggers ... and ... . From there the diagram shows ...*
 >
 > Answer:
 
@@ -477,7 +506,8 @@ The program code is stored and version control is implemented using Github. Deve
 >
 > Answer:
 
---- question 26 fill here ---
+With the project for some of us, it was already a struggle to use git and all the version-controlling software properly. In the last days, we started having also difficulties with dvc which worked perfectly fine locally but git was having issues regarding loading the data. Also deploying our model and making it easier and reproducible turned out challenging. In the previous courses, we got used to create a project and code that we understand perfectly and we are ready to hand in which got accepted by our professor but after the course finished nobody will use it or maybe it will not be even reproducible. Personally (Bence) I felt that when I am stuck with an issue and I start debugging I can go much in the attempting direction that can be very hard to implement in version control systems like git with commits, as it can be hard to explain and document every step that was meant to trying and debugging. Also, git is an amazing program to make group work easier and traceable, but it also became sometimes quite challenging to keep up a constant development in which we only include effective and perfectly working codes. All in all, it was still very good experience to improve our skills to create a reproducible
+environment.
 
 ### Question 27
 
@@ -494,4 +524,8 @@ The program code is stored and version control is implemented using Github. Deve
 >
 > Answer:
 
-Student s230234 was in charge of setting up DVC for the project and managing any issues connected to the data afterwards. He also helped solving problems with the automated tests (run by Github Actions at PRs), with the python codes and with the authentication of containers run in the cloud using secrets.
+-Student s201758 was in charge of making the config file and its implementation. Also he made the docker images with its trigger in the cloud to create a docker everytime a push to the main happens. Also worked on data bucket set up like for model saving, docker iages load etc.
+-Student s230243
+-Student s232457 was in charge of setting up the gcp project. This included setting up the bucket, container registry, secret manager, cloud build and cloud run. He also set up the CI/CD pipeline, and the backend prediction server. Additionally he helped with integrating all the locally developed prats of the project onto the cloud, such as getting access to the gbucket, setting up triggers and cloud run, and misc support tasks regarding the cloud.
+-Student s223407 was in charge of setting up the model and training via pytorch and lightning as well as the train logging with WandB. Additionally helped with other tasks such as building docker images, setting up hydra config files, unit testing and triggers/actions.
+-Student s230234 was in charge of setting up DVC for the project and managing any issues connected to the data afterwards. He also helped solving problems with the automated tests (run by Github Actions at PRs), with the python codes and with the authentication of containers run in the cloud using secrets.

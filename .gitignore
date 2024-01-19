@@ -188,7 +188,9 @@ cython_debug/
 !/data/*/.gitkeep
 
 wandb
-Patch_Camelyon_MLOps_G28/wandb
+patch_Camelyon_MLOps_G28/wandb
 models/*
-Patch_Camelyon_MLOps_G28/outputs
+patch_Camelyon_MLOps_G28/outputs
 outputs
+
+patch_camelyon_2024_mlops_g28/profiling_logs

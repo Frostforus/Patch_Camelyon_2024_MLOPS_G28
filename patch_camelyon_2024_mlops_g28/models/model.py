@@ -86,7 +86,7 @@ class SimpleCNN(LightningModule):
         torch.manual_seed(seed)
         super().__init__()
         # Save hyperparams and log them in wandb
-        self.save_hyperparameters("lr", "batch_size")
+        self.save_hyperparameters("lr", "batch_size", "seed")
         self.lr = lr
         self.batch_size = batch_size
 

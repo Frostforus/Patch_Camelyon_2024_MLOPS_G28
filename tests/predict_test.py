@@ -7,7 +7,9 @@ from tests import DATA_PDW, NETWORK, MODEL_PDW, PKL_PDW, PT_PDW, OTHER_PDW
 from torch.utils.data import DataLoader
 from patch_camelyon_2024_mlops_g28.predict_model import predict, PredictionDataset, main
 
-if os.path.exists(DATA_PDW):
+PATH_TO_FOLDER = "data/testFiles"
+
+if os.path.exists(DATA_PDW) and os.path.exists(PATH_TO_FOLDER):
     DATA = torch.load(DATA_PDW)
     torch.save(DATA[0:10], PKL_PDW)
     torch.save(DATA[0:10][0], PT_PDW)
