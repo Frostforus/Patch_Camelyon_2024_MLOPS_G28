@@ -8,6 +8,12 @@ RUN apt update && \
     apt install --no-install-recommends -y build-essential gcc && \
     apt clean && rm -rf /var/lib/apt/lists/*
 
+# Install DVC
+RUN pip install dvc
+
+# Pull data using DVC
+RUN dvc pull
+
 COPY requirements.txt requirements.txt
 COPY pyproject.toml pyproject.toml
 COPY patch_camelyon_2024_mlops_g28/ patch_camelyon_2024_mlops_g28/
@@ -17,7 +23,6 @@ WORKDIR /
 RUN pip install -r requirements.txt --no-cache-dir
 RUN pip install . --no-deps --no-cache-dir
 
-# Expose port 8080 for the application
 EXPOSE 8080
 
 ENTRYPOINT ["python", "-u", "patch_camelyon_2024_mlops_g28/train_model.py"]

@@ -105,7 +105,7 @@ end of the project.
 >
 > Answer:
 
---- question 1 fill here ---
+We are Group 28.
 
 ### Question 2
 > **Enter the study number for each member in the group**
@@ -116,7 +116,7 @@ end of the project.
 >
 > Answer:
 
---- question 2 fill here ---
+s201758, s230243, s232457, s223407, s230234
 
 ### Question 3
 > **What framework did you choose to work with and did it help you complete the project?**
@@ -163,7 +163,7 @@ Throughout our development process, we have manually maintained 'requirements.tx
 > *experiments.*
 > Answer:
 
---- question 5 fill here ---
+We have tried to follow the cookiecutter template and use it as the mainframe for our project. However, we have also implemented some new files to improve our workflow. For example, for docker we have created a separate folder that stores our docker files and the cloudbuild.yaml that makes the trigger event possible from the cloud. During implementing dvc we have also got files created regarding its set up like ".dvc" which has the config file, and data.dvc which defines the files from the data folder we wish to upload. Also our main data folder got located in the root in which we store our predictions, raw data, processed data etc. The original data folder from the template that is one level downer has our make_dataset.py which is going to produce our processed data from raw. We also added our reports folder in the root. When we are running the training of our model new folders are also appearing that are going to store the data from wandb.
 
 ### Question 6
 
@@ -325,6 +325,7 @@ Finally, we can see that after training is finished, the model checkpoint is als
 >
 > Answer:
 
+
 Docker was vital in this project as some of the training code and all of the backend was containerized, so that it could be deployed to cloud run.
 All of our dockerfiles can be found in the /dockerfiles/ directory.
 Regarding the server, we used a dockerfile to build the image, and then pushed it to the google cloud container registry, from where it was pulled and deployed to cloud run.
@@ -361,8 +362,10 @@ Implementing the CI/CD pipeline was also made easier by using docker, as we coul
 >
 > Answer:
 
+
 We used the following services: Cloud Storage, Container Registry, Secret Manager, Cloud Build and Cloud Run.  
 We used Cloud storage to store our data and models. We used Container Registry to store our docker images. We used Secret Manager to store our credentials to the gbucket, and ultimately be able to use these secrets in our docker containers. We used Cloud Build to build our docker images, and deploy them to the cloud run instance. We used Cloud Run to deploy our backend prediction server.
+
 
 ### Question 18
 
@@ -400,7 +403,9 @@ The second one is used to store our models.
 >
 > Answer:
 
+
 ![img_3.png](img_3.png)
+
 
 ### Question 21
 
@@ -409,7 +414,9 @@ The second one is used to store our models.
 >
 > Answer:
 
+
 ![img_4.png](img_4.png)
+
 
 ### Question 22
 
@@ -456,7 +463,9 @@ The frontend however that we host on the githubpages doesn't work because of som
 >
 > Answer:
 
-We used up over 50$ worth of credits, this was also due to our lack of knowledge regarding some thing with the cloud storage, as there was a day when 30$ worth of credits were used and we only becase painfully aware of this when we ran out of credits.
+
+We have used quite many as one of our group members ran out of his initial 50 free credits. As we looked into the reason behind we saw that data storage used lots of credit where we still did not find out the exact reason. What we saw, was that one day we had very extensive data loads periodically so maybe we forgot to turn off in our training file to upload always the data and model after each run. And as we debugged a lot, probably after each run it used cloud to upload the data. 
+
 
 ## Overall discussion of project
 
@@ -491,7 +500,8 @@ We used up over 50$ worth of credits, this was also due to our lack of knowledge
 >
 > Answer:
 
---- question 26 fill here ---
+With the project for some of us, it was already a struggle to use git and all the version-controlling software properly. In the last days, we started having also difficulties with dvc which worked perfectly fine locally but git was having issues regarding loading the data. Also deploying our model and making it easier and reproducible turned out challenging. In the previous courses, we got used to create a project and code that we understand perfectly and we are ready to hand in which got accepted by our professor but after the course finished nobody will use it or maybe it will not be even reproducible. Personally (Bence) I felt that when I am stuck with an issue and I start debugging I can go much in the attempting direction that can be very hard to implement in version control systems like git with commits, as it can be hard to explain and document every step that was meant to trying and debugging. Also, git is an amazing program to make group work easier and traceable, but it also became sometimes quite challenging to keep up a constant development in which we only include effective and perfectly working codes. All in all, it was still very good experience to improve our skills to create a reproducible
+environment.
 
 ### Question 27
 
@@ -508,4 +518,8 @@ We used up over 50$ worth of credits, this was also due to our lack of knowledge
 >
 > Answer:
 
-Student s223407 was in charge of setting up the model and training via pytorch and lightning as well as the train logging with WandB. Additionally helped with other tasks such as building docker images, setting up hydra config files, unit testing and triggers/actions.
+-Student s201758 was in charge of making the config file and its implementation. Also he made the docker images with its trigger in the cloud to create a docker everytime a push to the main happens. Also worked on data bucket set up like for model saving, docker iages load etc.
+-Student s230243
+-Student s232457
+-Student s223407 was in charge of setting up the model and training via pytorch and lightning as well as the train logging with WandB. Additionally helped with other tasks such as building docker images, setting up hydra config files, unit testing and triggers/actions.
+-Student s230234
