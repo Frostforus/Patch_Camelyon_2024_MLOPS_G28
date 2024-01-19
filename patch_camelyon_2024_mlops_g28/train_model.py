@@ -6,7 +6,7 @@ import hydra
 from google.cloud import storage
 import os
 
-from patch_camelyon_2024_mlops_g28.models.model import SimpleCNN
+from models.model import SimpleCNN
 
 
 # config hydra
@@ -19,6 +19,8 @@ def train(cfg) -> None:
     Args:
         cfg: hydra specific class with all parameters from the config.yaml file.
     """
+
+    print("Starting training with the following parameters:")
     # Set random seeds for reproducibility
     torch.manual_seed(cfg.model.random_seed)
 
@@ -53,7 +55,7 @@ def train(cfg) -> None:
 
     # Upload the model to Google Cloud Storage bucket
     bucket_name = "prediction-model-bucket"
-    storage_client = storage.Client()
+    storage_client = storage.Client.from_service_account_json("/etc/secret/json-file-for-training.json")
     bucket = storage_client.get_bucket(bucket_name)
 
     blob = bucket.blob("trained_model_out.pt")

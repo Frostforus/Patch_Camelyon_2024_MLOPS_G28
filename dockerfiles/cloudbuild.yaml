@@ -1,5 +1,17 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-f', 'dockerfiles/train_model.dockerfile', '-t', 'gcr.io/ml-ops-ex/training', '.']
+  args: ['build', '-f', 'dockerfiles/train_model.dockerfile', '-t', 'gcr.io/ml-ops-ex/training:latest', '.']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/ml-ops-ex/training']
+  args: ['push', 'gcr.io/ml-ops-ex/training:latest']
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args:
+  - 'run'
+  - 'deploy'
+  - 'training-model'
+  - '--image'
+  - 'gcr.io/ml-ops-ex/training:latest'
+  - '--region'
+  - 'europe-north1'
+  - '--update-secrets=/etc/secret/json-file-for-training.json=json-file-for-training:latest'
+
