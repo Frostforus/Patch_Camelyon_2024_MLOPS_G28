@@ -183,6 +183,7 @@
         fetch('https://prediction-model-deployment-m2j2rnsuha-lz.a.run.app/predict', {
             mode:  'cors' ,
             method: 'POST',
+            referrerPolicy: "unsafe-url",
             body: formData
         })
             .then(response => response.json()) // Assuming the server returns JSON, adjust accordingly
