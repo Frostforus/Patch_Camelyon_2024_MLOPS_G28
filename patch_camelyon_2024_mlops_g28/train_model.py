@@ -19,6 +19,8 @@ def train(cfg) -> None:
     Args:
         cfg: hydra specific class with all parameters from the config.yaml file.
     """
+
+    print("Starting training with the following parameters:")
     # Set random seeds for reproducibility
     torch.manual_seed(cfg.model.random_seed)
 
