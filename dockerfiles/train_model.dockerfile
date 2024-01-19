@@ -4,11 +4,6 @@ FROM python:3.11-slim
 # Set WandB API Key
 ENV WANDB_API_KEY=792ab2b5bc699fe2e350a54f40aff67f76f00304
 
-# Install DVC
-RUN pip install dvc
-
-# Initialize DVC
-RUN dvc init --no-scm
 
 RUN apt update && \
     apt install --no-install-recommends -y build-essential gcc && \
@@ -16,7 +11,7 @@ RUN apt update && \
 
 
 
-RUN dvc pull -r gs://ml-ops-data-bucket/ -d /data
+RUN dvc pull
 
 
 COPY requirements.txt requirements.txt
