@@ -41,7 +41,9 @@ def train(cfg) -> None:
         accumulate_grad_batches=cfg.trainer.accumulate_grad_batches,
         gradient_clip_val=cfg.trainer.gradient_clip_val
     )
-    
+    wandb_logger.experiment.config['Dataset_fraction_used'] = cfg.trainer.limit_train_batches
+    wandb_logger.experiment.config['Accumulated_grad_batches'] = cfg.trainer.accumulate_grad_batches
+    wandb_logger.experiment.config['Gradient_clip_val'] = cfg.trainer.gradient_clip_val
     # Train the model
     trainer.fit(model)
 
