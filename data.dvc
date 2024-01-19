@@ -16,41 +16,6 @@ outs:
       storage:
         etag: 08f7d2f5b5f5e783031001
         version_id: '1705614572874103'
-  - relpath: processed/test_dataset.pkl
-    md5: fb84a2bb32964558de08a8a63bd4e4b8
-    size: 3623922870
-    cloud:
-      storage:
-        etag: 08d585fdfaf9e783031001
-        version_id: '1705615791440597'
-  - relpath: processed/test_images.pt
-    md5: 60b67ae39a4b3350dd2075832263badd
-    size: 362300592
-    cloud:
-      storage:
-        etag: 08d0dbe7e1f6e783031001
-        version_id: '1705614933355984'
-  - relpath: processed/test_prediction_images.pt
-    md5: 5bf51fdbb59b005ffb47b676d5984d38
-    size: 362300711
-    cloud:
-      storage:
-        etag: 08f88dcaa4f7e783031001
-        version_id: '1705615073380088'
-  - relpath: processed/train_dataset.pkl
-    md5: 706be659265188cab260b7d41fda3b4d
-    size: 3623991548
-    cloud:
-      storage:
-        etag: 08fea98897fae783031001
-        version_id: '1705615850345726'
-  - relpath: processed/validation_dataset.pkl
-    md5: d6b505c98a8c344e6b09bfd04bfab965
-    size: 3623922906
-    cloud:
-      storage:
-        etag: 08f1c292adfae783031001
-        version_id: '1705615896650097'
   - relpath: raw/.dvckeep
     md5: d41d8cd98f00b204e9800998ecf8427e
     size: 0
