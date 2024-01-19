@@ -7,6 +7,15 @@ import os
 from google.cloud import storage
 import cv2
 import numpy as np
+from fastapi.middleware.cors import CORSMiddleware
+
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost",
+    "http://localhost:8080",
+]
+
 
 from models.model import SimpleCNN
 
@@ -83,6 +92,15 @@ class PredictionModel:
 
 # Global variables,
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 prediction_model = PredictionModel()
 
 

@@ -168,6 +168,12 @@
 </div>
 </body>
 <script>
+        fetch("https://prediction-model-deployment-m2j2rnsuha-lz.a.run.app/ping/").then((Response) => {
+        return Response.json()
+    }).then((data) => {
+        console.log("Hello:")
+        console.log(data);
+    })
     document.getElementById('uploadForm').addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -175,6 +181,7 @@
         let formData = new FormData(this);
         // Make a Fetch API request
         fetch('https://prediction-model-deployment-m2j2rnsuha-lz.a.run.app/predict/', {
+            mode:  'cors' ,
             method: 'POST',
             body: formData
         })
