@@ -78,7 +78,7 @@ end of the project.
 * [x] Get some continuous integration running on the github repository
 * [x] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
 * [x] Create a trigger workflow for automatically building your docker images
-* [~] Get your model training in GCP using either the Engine or Vertex AI
+* [x] Get your model training in GCP using either the Engine or Vertex AI
 * [x] Create a FastAPI application that can do inference using your model
 * [ ] If applicable, consider deploying the model locally using torchserve
 * [x] Deploy your model in GCP using either Functions or Run as the backend
@@ -105,7 +105,7 @@ end of the project.
 >
 > Answer:
 
-We are Group 28.
+Group 28
 
 ### Question 2
 > **Enter the study number for each member in the group**
@@ -116,7 +116,7 @@ We are Group 28.
 >
 > Answer:
 
-s201758, s230243, s232457, s223407, s230234
+s223407, s230243, s232457, s201758, s230234
 
 ### Question 3
 > **What framework did you choose to work with and did it help you complete the project?**
@@ -223,7 +223,7 @@ The total code coverage of code is 72%, which includes all our source code which
 >
 > Answer:
 
---- question 9 fill here ---
+Everyone had their own branches to work on separate tasks during the project. The main branch was protected, we have utilized pull request to merge the working code of the different tasks. To merge the new code to the main branch, it needed to pass all tests we wrote and at least another member had to approve it. This helped to maintain a working code in the main branch with clear commits of the new sections of the project. Of course, in the beginning we were not pros with git, sometimes we ran into conflicts when there was an overlap in what we have worked on. When we were resolving some issues last minute, we also created other branches for specific issues as well to keep the different workflows separated and more transparent. Overall, it was clearly a huge benefit to use git, as we have worked on very different tasks in the project and without git it would have been impossible to integrate all of it together.
 
 ### Question 10
 
@@ -238,7 +238,7 @@ The total code coverage of code is 72%, which includes all our source code which
 >
 > Answer:
 
---- question 10 fill here ---
+Yes, we push and pull our dataset using DVC, as the raw dataset is around 6GBs so it would not be possible using github. First we uploaded to data to our drive, but soon changed the storage and moved it to a GCP bucket. DVC made it very convenient to work with our large data files like git. However, we have not utilized version controlling that much, as we had one dataset which we worked with during the whole project. In the future, if we train new models using new datasets, it would be very beneficial that we can return to older dataset versions to investigate differences in the data and the models. As we understand it was also the proper way to manage data in our GCP bucket used for our GCP project.
 
 ### Question 11
 
@@ -393,12 +393,9 @@ However sadly the final training couldn't be run on this due to a lack of credit
 > **You can take inspiration from [this figure](figures/bucket.png).**
 >
 > Answer:
-We used two buckets:
-![img.png](figures\img.png)
-The first one is used to store our data.
-![img_1.png](figures\img_1.png)
-The second one is used to store our models.
-![img_2.png](figures\img_2.png)
+
+![GCP Bucket screenshot 1](figures/bucket_screenshot_1.png)
+![GCP Bucket screenshot 2](figures/bucket_screenshot_2.png)
 
 ### Question 20
 
@@ -408,7 +405,7 @@ The second one is used to store our models.
 > Answer:
 
 
-![img_3.png](figures\img_3.png)
+![img_3.png](figures/img_3.png)
 
 
 ### Question 21
@@ -419,7 +416,7 @@ The second one is used to store our models.
 > Answer:
 
 
-![img_4.png](figures\img_4.png)
+![img_4.png](figures/img_4.png)
 
 
 ### Question 22
@@ -490,7 +487,9 @@ We have used quite many as one of our group members ran out of his initial 50 fr
 >
 > Answer:
 
-![Flow image.](figures/flow.png)
+![Project workflow](figures/flow.jpg)
+
+The program code is stored and version control is implemented using Github. Developers have their own branches for their tasks. (Some other branches also exist to differentiate between specific workflows.) Before committing a pre-commit sequence is run locally, where the file formats are checked and the new code is formatted using ruff. Developers use WandB and Hydra for tracking the weights and biases during their experiments and to do hyperparameter optimization of the model. The master branch is protected, pull requests have to pass all tests and have to be accepted by another developer. These tests are run automatically after the pull request is created using Github Actions and they check the funcionality of the new code using pre-written tests. (They have to pass on Linux, Windows and MacOS as well.) When something is accepted and merged into the master branch the GCP Container Registry is triggered to build the latest Docker image from then new commit. From the created image, a Docker container is automatically started by GCP Cloud Run which then can be accessed by the end user through an API. (We were also building a website through which the users could utilize our app visually without knowing how to use the API, but still have some complications with the communication between the systems.) Also, the users can always clone the source code from the Github repository and build and test the application locally. (They can reproduce the exact same environment using Docker and the requirements files.)
 
 ### Question 26
 
@@ -526,4 +525,4 @@ environment.
 -Student s230243
 -Student s232457 was in charge of setting up the gcp project. This included setting up the bucket, container registry, secret manager, cloud build and cloud run. He also set up the CI/CD pipeline, and the backend prediction server. Additionally he helped with integrating all the locally developed prats of the project onto the cloud, such as getting access to the gbucket, setting up triggers and cloud run, and misc support tasks regarding the cloud.
 -Student s223407 was in charge of setting up the model and training via pytorch and lightning as well as the train logging with WandB. Additionally helped with other tasks such as building docker images, setting up hydra config files, unit testing and triggers/actions.
--Student s230234
+-Student s230234 was in charge of setting up DVC for the project and managing any issues connected to the data afterwards. He also helped solving problems with the automated tests (run by Github Actions at PRs), with the python codes and with the authentication of containers run in the cloud using secrets.
