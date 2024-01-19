@@ -10,7 +10,7 @@ steps:
   - 'deploy'
   - 'prediction-model-deployment'
   - '--image'
-  - 'gcr.io/ml-ops-ex/fastapibackend:latest'
+  - 'gcr.io/ml-ops-ex/deployment/fastapibackend:latest'
   - '--region'
   - 'europe-north1'
   - '--update-secrets=/etc/secret/prediction-gbucket-secret.json=prediction-gbucket-secret:latest'
