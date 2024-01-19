@@ -8,11 +8,11 @@ steps:
   args:
   - 'run'
   - 'deploy'
-  - 'deployment-prediction-model'
+  - 'prediction-model-deployment'
   - '--image'
   - 'gcr.io/ml-ops-ex/:latest'
   - '--region'
   - 'europe-north1'
   - '--update-secrets=/etc/secret/prediction-gbucket-secret.json=prediction-gbucket-secret:latest'
 images:
-  - 'gcr.io/your-project-id/your-image-name:your-tag'
+  - 'gcr.io/ml-ops-ex/fastapibackend:your-tag'
