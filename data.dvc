@@ -2,44 +2,101 @@ outs:
 - hash: md5
   path: data
   files:
-  - relpath: .DS_Store
-    md5: 73d09606e7730d98722dbc7068353751
-    size: 8196
-  - relpath: predictions/.gitkeep
+  - relpath: predictions/.dvckeep
     md5: d41d8cd98f00b204e9800998ecf8427e
     size: 0
-  - relpath: processed/.gitkeep
+    cloud:
+      storage:
+        etag: 0884cffbb5f5e783031001
+        version_id: '1705614572971908'
+  - relpath: processed/.dvckeep
     md5: d41d8cd98f00b204e9800998ecf8427e
     size: 0
-  - relpath: processed/test_dataset.pkl
-    md5: 8723679ab8c164052b2eb02350cf245e
-    size: 3623922870
-  - relpath: processed/train_dataset.pkl
-    md5: 0b25adba982c8e100b157610483f1b06
-    size: 3623991548
-  - relpath: processed/validation_dataset.pkl
-    md5: 13da15a1758b7e50772bef1e70df73c2
-    size: 3623922906
-  - relpath: raw/.DS_Store
-    md5: 2cb782e9caa37630016fb6db8d6c534a
-    size: 8196
-  - relpath: raw/.gitkeep
+    cloud:
+      storage:
+        etag: 08f7d2f5b5f5e783031001
+        version_id: '1705614572874103'
+  - relpath: raw/.dvckeep
     md5: d41d8cd98f00b204e9800998ecf8427e
     size: 0
+    cloud:
+      storage:
+        etag: 08f9c6f9b5f5e783031001
+        version_id: '1705614572938105'
+  - relpath: raw/camelyonpatch_level_2_split_test_meta.csv
+    md5: 3455fd69135b66734e1008f3af684566
+    size: 1608584
+    cloud:
+      storage:
+        etag: 088c9bf7b380e883031001
+        version_id: '1705617521495436'
+  - relpath: raw/camelyonpatch_level_2_split_test_x.h5.gz
+    md5: d8c2d60d490dbd479f8199bdfa0cf6ec
+    size: 800875929
+    cloud:
+      storage:
+        etag: 08fcf6c6f780e883031001
+        version_id: '1705617663310716'
+  - relpath: raw/camelyonpatch_level_2_split_test_y.h5.gz
+    md5: 60a7035772fbdb7f34eb86d4420cf66a
+    size: 3040
+    cloud:
+      storage:
+        etag: 08fbdccfb380e883031001
+        version_id: '1705617520848507'
+  - relpath: raw/camelyonpatch_level_2_split_train_mask.h5.gz
+    md5: 2d46ab0bf4477cf521429d31545de1cf
+    size: 14482351
+    cloud:
+      storage:
+        etag: 08eb9cf4b480e883031001
+        version_id: '1705617523543659'
+  - relpath: raw/camelyonpatch_level_2_split_train_meta.csv
+    md5: 5a3dd671e465cfd74b5b822125e65b0a
+    size: 15047830
+    cloud:
+      storage:
+        etag: 08d09eddb480e883031001
+        version_id: '1705617523167056'
+  - relpath: raw/camelyonpatch_level_2_split_train_x.h5.gz
+    md5: 1571f514728f59376b705fc836ff4b63
+    size: 6421353462
+    cloud:
+      storage:
+        etag: 08fdea8cff81e883031001
+        version_id: '1705617947571581'
+  - relpath: raw/camelyonpatch_level_2_split_train_y.h5.gz
+    md5: 35c2d7259d906cfc8143347bb8e05be7
+    size: 21378
+    cloud:
+      storage:
+        etag: 08d9bfd6b380e883031001
+        version_id: '1705617520959449'
+  - relpath: raw/camelyonpatch_level_2_split_valid_meta.csv
+    md5: 67589e00a4a37ec317f2d1932c7502ca
+    size: 1850810
+    cloud:
+      storage:
+        etag: 08bc97c3b380e883031001
+        version_id: '1705617520643004'
   - relpath: raw/camelyonpatch_level_2_split_valid_x.h5.gz
     md5: d5b63470df7cfa627aeec8b9dc0c066e
     size: 805965320
     cloud:
-      remote_storage:
-        etag: 08ebc49a91b9dd83031001
-        version_id: '1705254792372843'
+      storage:
+        etag: 08a3cde6eb80e883031001
+        version_id: '1705617638663843'
   - relpath: raw/camelyonpatch_level_2_split_valid_y.h5.gz
     md5: 2b85f58b927af9964a4c15b8f7e8f179
     size: 3038
     cloud:
-      remote_storage:
-        etag: 08c2e0dcb3b8dd83031001
-        version_id: '1705254596325442'
-  - relpath: testFiles/.gitkeep
+      storage:
+        etag: 089499d5b380e883031001
+        version_id: '1705617520938132'
+  - relpath: testFiles/.dvckeep
     md5: d41d8cd98f00b204e9800998ecf8427e
     size: 0
+    cloud:
+      storage:
+        etag: 08c7baf9b5f5e783031001
+        version_id: '1705614572936519'
