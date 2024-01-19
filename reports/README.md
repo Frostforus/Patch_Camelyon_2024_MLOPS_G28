@@ -325,7 +325,11 @@ Finally, we can see that after training is finished, the model checkpoint is als
 >
 > Answer:
 
---- question 15 fill here ---
+Docker was vital in this project as some of the training code and all of the backend was containerized, so that it could be deployed to cloud run.
+All of our dockerfiles can be found in the /dockerfiles/ directory.
+Regarding the server, we used a dockerfile to build the image, and then pushed it to the google cloud container registry, from where it was pulled and deployed to cloud run.
+This helped make sure that the server was always running the same code, and that it was easy to update it.
+Implementing the CI/CD pipeline was also made easier by using docker, as we could just build the image and push it to the registry, and then deploy it to cloud run.
 
 ### Question 16
 
