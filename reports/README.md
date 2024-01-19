@@ -325,7 +325,11 @@ Finally, we can see that after training is finished, the model checkpoint is als
 >
 > Answer:
 
---- question 15 fill here ---
+Docker was vital in this project as some of the training code and all of the backend was containerized, so that it could be deployed to cloud run.
+All of our dockerfiles can be found in the /dockerfiles/ directory.
+Regarding the server, we used a dockerfile to build the image, and then pushed it to the google cloud container registry, from where it was pulled and deployed to cloud run.
+This helped make sure that the server was always running the same code, and that it was easy to update it.
+Implementing the CI/CD pipeline was also made easier by using docker, as we could just build the image and push it to the registry, and then deploy it to cloud run.
 
 ### Question 16
 
@@ -357,7 +361,8 @@ Finally, we can see that after training is finished, the model checkpoint is als
 >
 > Answer:
 
---- question 17 fill here ---
+We used the following services: Cloud Storage, Container Registry, Secret Manager, Cloud Build and Cloud Run.  
+We used Cloud storage to store our data and models. We used Container Registry to store our docker images. We used Secret Manager to store our credentials to the gbucket, and ultimately be able to use these secrets in our docker containers. We used Cloud Build to build our docker images, and deploy them to the cloud run instance. We used Cloud Run to deploy our backend prediction server.
 
 ### Question 18
 
@@ -372,7 +377,8 @@ Finally, we can see that after training is finished, the model checkpoint is als
 >
 > Answer:
 
---- question 18 fill here ---
+We used cloud engine to run the training of our models. We used the following hardware: n1-standard-4 (4 vCPUs, 15 GB memory). 
+However sadly the final training couldn't be run on this due to a lack of credits
 
 ### Question 19
 
@@ -380,8 +386,12 @@ Finally, we can see that after training is finished, the model checkpoint is als
 > **You can take inspiration from [this figure](figures/bucket.png).**
 >
 > Answer:
-
---- question 19 fill here ---
+We used two buckets:
+![img.png](img.png)
+The first one is used to store our data.
+![img_1.png](img_1.png)
+The second one is used to store our models.
+![img_2.png](img_2.png)
 
 ### Question 20
 
@@ -390,7 +400,7 @@ Finally, we can see that after training is finished, the model checkpoint is als
 >
 > Answer:
 
---- question 20 fill here ---
+![img_3.png](img_3.png)
 
 ### Question 21
 
@@ -399,7 +409,7 @@ Finally, we can see that after training is finished, the model checkpoint is als
 >
 > Answer:
 
---- question 21 fill here ---
+![img_4.png](img_4.png)
 
 ### Question 22
 
@@ -415,7 +425,9 @@ Finally, we can see that after training is finished, the model checkpoint is als
 >
 > Answer:
 
---- question 22 fill here ---
+Yes we could deploy our model to the cloud. By hosting our fastapi server with the cloud run service. We had some issues with this as GCP always had one more problem in each step when we fixed something, as evident from the build history.
+In the end we managed to create a server which can be invoked by sending a post request with the image, which in turn returns a prediction fro the picture. 
+The frontend however that we host on the githubpages doesn't work because of some cors error, and a new insecure error, as it complains about the requested url being served over http, instead of https, however we couldn't find a way to fix this.
 
 ### Question 23
 
@@ -444,7 +456,7 @@ Finally, we can see that after training is finished, the model checkpoint is als
 >
 > Answer:
 
---- question 24 fill here ---
+We used up over 50$ worth of credits, this was also due to our lack of knowledge regarding some thing with the cloud storage, as there was a day when 30$ worth of credits were used and we only becase painfully aware of this when we ran out of credits.
 
 ## Overall discussion of project
 
