@@ -275,7 +275,7 @@ For our project an example of a triggered workflow can be seen here: <https://gi
 >
 > Answer:
 
---- question 12 fill here ---
+Yes we used config files in our experiments. We basically tried to create a configuration file with parameters that gives good results, we filled out our config file and then we used hydra to implement it. We used model parameters:  lr: 1e-3, batch_size: 16, random_seed: 42. And since we did the training with pytorch lightning we also made use of trainer parameters like: max_epochs: 1, limit_train_batches: 0.2, gpu_accelerator: True, check_val_every_n_epoch: 2, accumulate_grad_batches: 1,gradient_clip_val: 0.5. We implemented them by hydra command: @hydra.main(config_path="conf", config_name="config", version_base="1.2"), and we loaded in each parameters by specifying we wanted to load from cfg and define whether it is a model or trainer parameter like: cfg.model.random_seed.
 
 ### Question 13
 
@@ -450,7 +450,7 @@ The frontend however that we host on the githubpages doesn't work because of som
 >
 > Answer:
 
---- question 23 fill here ---
+Yes,we looked into the possibilities of monitoring regarding our model. We were thinking about the data driftng possiblity but we ended up not having the main focus on tht part as our data is quite stable at the moment, data drifting is probably not the biggest issue. However, to preserve the propr wor of our system probably in the future it will be also a feature that would be great to implement. We more used the cloud monitoring as it was a tool we used also for debugging our cloud run with the logs menu. We have also looked into the metrics to give a feeling about our system's performance. Regarding alerts, we have also set up an alert regarding logging entries in our cloud build.
 
 ### Question 24
 
@@ -521,7 +521,7 @@ environment.
 >
 > Answer:
 
--Student s201758 was in charge of making the config file and its implementation. Also he made the docker images with its trigger in the cloud to create a docker everytime a push to the main happens. Also worked on data bucket set up like for model saving, docker iages load etc.
+-Student s201758 was in charge of making the config file and its implementation, the dockerfiles and their cloud implementation and looking into monitoring. For using the config file also hydra was used and the dockerfiles first have been built and ran locally while the target was to create an automatic trigger to build after a git push and also run the docker to save out a trained model. In monitoring the main focus was on cloud monitoring and alert systems.
 -Student s230243
 -Student s232457 was in charge of setting up the gcp project. This included setting up the bucket, container registry, secret manager, cloud build and cloud run. He also set up the CI/CD pipeline, and the backend prediction server. Additionally he helped with integrating all the locally developed prats of the project onto the cloud, such as getting access to the gbucket, setting up triggers and cloud run, and misc support tasks regarding the cloud.
 -Student s223407 was in charge of setting up the model and training via pytorch and lightning as well as the train logging with WandB. Additionally helped with other tasks such as building docker images, setting up hydra config files, unit testing and triggers/actions.
