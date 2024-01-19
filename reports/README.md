@@ -461,7 +461,7 @@ Yes, we push and pull our dataset using DVC, as the raw dataset is around 6GBs s
 >
 > Answer:
 
-![Project workflow](figures/flow.png)
+![Project workflow](figures/flow.jpg)
 
 The program code is stored and version control is implemented using Github. Developers have their own branches for their tasks. (Some other branches also exist to differentiate between specific workflows.) Before committing a pre-commit sequence is run locally, where the file formats are checked and the new code is formatted using ruff. Developers use WandB and Hydra for tracking the weights and biases during their experiments and to do hyperparameter optimization of the model. The master branch is protected, pull requests have to pass all tests and have to be accepted by another developer. These tests are run automatically after the pull request is created using Github Actions and they check the funcionality of the new code using pre-written tests. (They have to pass on Linux, Windows and MacOS as well.) When something is accepted and merged into the master branch the GCP Container Registry is triggered to build the latest Docker image from then new commit. From the created image, a Docker container is automatically started by GCP Cloud Run which then can be accessed by the end user through an API. (We were also building a website through which the users could utilize our app visually without knowing how to use the API, but still have some complications with the communication between the systems.) Also, the users can always clone the source code from the Github repository and build and test the application locally. (They can reproduce the exact same environment using Docker and the requirements files.)
 
