@@ -17,5 +17,6 @@ WORKDIR /
 RUN pip install -r requirements.txt --no-cache-dir
 RUN pip install . --no-deps --no-cache-dir
 
+EXPOSE 8080
 
 ENTRYPOINT ["python", "-u", "patch_camelyon_2024_mlops_g28/train_model.py"]
