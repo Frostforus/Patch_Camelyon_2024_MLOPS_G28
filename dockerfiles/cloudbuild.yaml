@@ -10,7 +10,7 @@ steps:
   - 'deploy'
   - 'training-model'
   - '--image'
-  - 'gcr.io/ml-ops-ex/training/:latest'
+  - 'gcr.io/ml-ops-ex/training:latest'
   - '--region'
   - 'europe-north1'
   - '--update-secrets=/etc/secret/json-file-for-training.json=json-file-for-training:latest'
