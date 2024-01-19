@@ -168,7 +168,7 @@
 </div>
 </body>
 <script>
-        fetch("https://prediction-model-deployment-m2j2rnsuha-lz.a.run.app/ping/").then((Response) => {
+        fetch("https://prediction-model-deployment-m2j2rnsuha-lz.a.run.app/ping").then((Response) => {
         return Response.json()
     }).then((data) => {
         console.log("Hello:")
@@ -180,7 +180,7 @@
         // Get the form data
         let formData = new FormData(this);
         // Make a Fetch API request
-        fetch('https://prediction-model-deployment-m2j2rnsuha-lz.a.run.app/predict/', {
+        fetch('https://prediction-model-deployment-m2j2rnsuha-lz.a.run.app/predict', {
             mode:  'cors' ,
             method: 'POST',
             body: formData

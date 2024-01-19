@@ -10,14 +10,11 @@ import numpy as np
 from fastapi.middleware.cors import CORSMiddleware
 
 origins = [
-    "http://localhost.tiangolo.com",
-    "https://localhost.tiangolo.com",
-    "http://localhost",
-    "http://localhost:8080",
-]
-
+    "frostforus.github.io",
+    "*", ]
 
 from models.model import SimpleCNN
+
 
 class PredictionModel:
     def __init__(self,
