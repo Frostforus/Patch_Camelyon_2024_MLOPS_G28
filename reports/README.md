@@ -367,7 +367,7 @@ The profiling stores the information for both GPU(only when available) and CPU, 
 > Answer:
 
 
-We used the following services: Cloud Storage, Container Registry, Secret Manager, Cloud Build and Cloud Run.  
+We used the following services: Cloud Storage, Container Registry, Secret Manager, Cloud Build and Cloud Run.
 We used Cloud storage to store our data and models. We used Container Registry to store our docker images. We used Secret Manager to store our credentials to the gbucket, and ultimately be able to use these secrets in our docker containers. We used Cloud Build to build our docker images, and deploy them to the cloud run instance. We used Cloud Run to deploy our backend prediction server.
 
 
@@ -384,7 +384,7 @@ We used Cloud storage to store our data and models. We used Container Registry t
 >
 > Answer:
 
-We used cloud engine to run the training of our models. We used the following hardware: n1-standard-4 (4 vCPUs, 15 GB memory). 
+We used cloud engine to run the training of our models. We used the following hardware: n1-standard-4 (4 vCPUs, 15 GB memory).
 However sadly the final training couldn't be run on this due to a lack of credits
 
 ### Question 19
@@ -394,11 +394,11 @@ However sadly the final training couldn't be run on this due to a lack of credit
 >
 > Answer:
 We used two buckets:
-![img.png](img.png)
+![img.png](figures\img.png)
 The first one is used to store our data.
-![img_1.png](img_1.png)
+![img_1.png](figures\img_1.png)
 The second one is used to store our models.
-![img_2.png](img_2.png)
+![img_2.png](figures\img_2.png)
 
 ### Question 20
 
@@ -408,7 +408,7 @@ The second one is used to store our models.
 > Answer:
 
 
-![img_3.png](img_3.png)
+![img_3.png](figures\img_3.png)
 
 
 ### Question 21
@@ -419,7 +419,7 @@ The second one is used to store our models.
 > Answer:
 
 
-![img_4.png](img_4.png)
+![img_4.png](figures\img_4.png)
 
 
 ### Question 22
@@ -437,7 +437,7 @@ The second one is used to store our models.
 > Answer:
 
 Yes we could deploy our model to the cloud. By hosting our fastapi server with the cloud run service. We had some issues with this as GCP always had one more problem in each step when we fixed something, as evident from the build history.
-In the end we managed to create a server which can be invoked by sending a post request with the image, which in turn returns a prediction fro the picture. 
+In the end we managed to create a server which can be invoked by sending a post request with the image, which in turn returns a prediction fro the picture.
 The frontend however that we host on the githubpages doesn't work because of some cors error, and a new insecure error, as it complains about the requested url being served over http, instead of https, however we couldn't find a way to fix this.
 
 ### Question 23
@@ -468,7 +468,7 @@ The frontend however that we host on the githubpages doesn't work because of som
 > Answer:
 
 
-We have used quite many as one of our group members ran out of his initial 50 free credits. As we looked into the reason behind we saw that data storage used lots of credit where we still did not find out the exact reason. What we saw, was that one day we had very extensive data loads periodically so maybe we forgot to turn off in our training file to upload always the data and model after each run. And as we debugged a lot, probably after each run it used cloud to upload the data. 
+We have used quite many as one of our group members ran out of his initial 50 free credits. As we looked into the reason behind we saw that data storage used lots of credit where we still did not find out the exact reason. What we saw, was that one day we had very extensive data loads periodically so maybe we forgot to turn off in our training file to upload always the data and model after each run. And as we debugged a lot, probably after each run it used cloud to upload the data.
 
 
 ## Overall discussion of project
