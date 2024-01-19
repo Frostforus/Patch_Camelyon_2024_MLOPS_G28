@@ -14,9 +14,7 @@ RUN apt update && \
     apt install --no-install-recommends -y build-essential gcc && \
     apt clean && rm -rf /var/lib/apt/lists/*
 
-# Copy DVC-related files
-COPY dvc.lock dvc.lock
-COPY dvc.yaml dvc.yaml
+
 
 RUN dvc pull -r gs://ml-ops-data-bucket/ -d /data
 
