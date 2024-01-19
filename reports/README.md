@@ -390,11 +390,11 @@ However sadly the final training couldn't be run on this due to a lack of credit
 >
 > Answer:
 We used two buckets:
-![img.png](img.png)
+![img.png](figures/img.png)
 The first one is used to store our data.
-![img_1.png](img_1.png)
+![img_1.png](figures/img_1.png)
 The second one is used to store our models.
-![img_2.png](img_2.png)
+![img_2.png](figures/img_2.png)
 
 ### Question 20
 
