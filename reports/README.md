@@ -494,4 +494,4 @@ The program code is stored and version control is implemented using Github. Deve
 >
 > Answer:
 
-s230234 was in charge of setting up DVC for the project and managing any issues connected to the data afterwards. He also helped solving problems with the automated tests (run by Github Actions at PRs) and with the authentication of containers run in the cloud using secrets.
+Student s230234 was in charge of setting up DVC for the project and managing any issues connected to the data afterwards. He also helped solving problems with the automated tests (run by Github Actions at PRs), with the python codes and with the authentication of containers run in the cloud using secrets.
