@@ -50,38 +50,38 @@ end of the project.
 
 ### Week 1
 
-* [ ] Create a git repository
-* [ ] Make sure that all team members have write access to the github repository
-* [ ] Create a dedicated environment for you project to keep track of your packages
-* [ ] Create the initial file structure using cookiecutter
-* [ ] Fill out the `make_dataset.py` file such that it downloads whatever data you need and
-* [ ] Add a model file and a training script and get that running
-* [ ] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
-* [ ] Remember to comply with good coding practices (`pep8`) while doing the project
-* [ ] Do a bit of code typing and remember to document essential parts of your code
-* [ ] Setup version control for your data or part of your data
-* [ ] Construct one or multiple docker files for your code
-* [ ] Build the docker files locally and make sure they work as intended
-* [ ] Write one or multiple configurations files for your experiments
-* [ ] Used Hydra to load the configurations and manage your hyperparameters
-* [ ] When you have something that works somewhat, remember at some point to to some profiling and see if
+* [x] Create a git repository
+* [x] Make sure that all team members have write access to the github repository
+* [x] Create a dedicated environment for you project to keep track of your packages
+* [x] Create the initial file structure using cookiecutter
+* [x] Fill out the `make_dataset.py` file such that it downloads whatever data you need and
+* [x] Add a model file and a training script and get that running
+* [x] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
+* [x] Remember to comply with good coding practices (`pep8`) while doing the project
+* [x] Do a bit of code typing and remember to document essential parts of your code
+* [x] Setup version control for your data or part of your data
+* [x] Construct one or multiple docker files for your code
+* [x] Build the docker files locally and make sure they work as intended
+* [x] Write one or multiple configurations files for your experiments
+* [x] Used Hydra to load the configurations and manage your hyperparameters
+* [x] When you have something that works somewhat, remember at some point to to some profiling and see if
       you can optimize your code
-* [ ] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
+* [x] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
       consider running a hyperparameter optimization sweep.
-* [ ] Use Pytorch-lightning (if applicable) to reduce the amount of boilerplate in your code
+* [x] Use Pytorch-lightning (if applicable) to reduce the amount of boilerplate in your code
 
 ### Week 2
 
-* [ ] Write unit tests related to the data part of your code
-* [ ] Write unit tests related to model construction and or model training
-* [ ] Calculate the coverage.
-* [ ] Get some continuous integration running on the github repository
-* [ ] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
-* [ ] Create a trigger workflow for automatically building your docker images
-* [ ] Get your model training in GCP using either the Engine or Vertex AI
-* [ ] Create a FastAPI application that can do inference using your model
+* [x] Write unit tests related to the data part of your code
+* [x] Write unit tests related to model construction and or model training
+* [x] Calculate the coverage.
+* [x] Get some continuous integration running on the github repository
+* [x] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
+* [x] Create a trigger workflow for automatically building your docker images
+* [~] Get your model training in GCP using either the Engine or Vertex AI
+* [x] Create a FastAPI application that can do inference using your model
 * [ ] If applicable, consider deploying the model locally using torchserve
-* [ ] Deploy your model in GCP using either Functions or Run as the backend
+* [x] Deploy your model in GCP using either Functions or Run as the backend
 
 ### Week 3
 
@@ -94,9 +94,9 @@ end of the project.
 
 ### Additional
 
-* [ ] Revisit your initial project description. Did the project turn out as you wanted?
-* [ ] Make sure all group members have a understanding about all parts of the project
-* [ ] Uploaded all your code to github
+* [x] Revisit your initial project description. Did the project turn out as you wanted?
+* [x] Make sure all group members have a understanding about all parts of the project
+* [x] Uploaded all your code to github
 
 ## Group information
 
@@ -174,7 +174,7 @@ Throughout our development process, we have manually maintained 'requirements.tx
 >
 > Answer:
 
---- question 6 fill here ---
+For code quality we have implemented a totla of 23 unit tests through the pytest framework. For code format we have complied with the PEP8 style guide, to ensure the commitment of the code with the standar we have implemented ruff in the precommit file and the ghithub actions run when doing pull requests to the main branch.
 
 ## Version control
 
@@ -204,11 +204,11 @@ In total we have implemented 21 tests over 3 testing files. These all make sure 
 >
 > Example:
 > *The total code coverage of code is X%, which includes all our source code. We are far from 100% coverage of our **
-> *code and even if we were then...*
+> **
 >
 > Answer:
 
---- question 8 fill here ---
+The total code coverage of code is 72%, which includes all our source code which is all under the patch_camelyon_2024_mlops_g28 folder. We are relatively far from 100% coverage on our code and even if we were then there could still be problems that are not adressed as unit testing is only one out of many testing types. For instance it could be relevant for an automated project such as ours to implement integration and deployment tests, also given the ML nature of the project it could be interesting to make some ML specific tests that ensure the training process performs as expected.
 
 ### Question 9
 
@@ -254,7 +254,9 @@ In total we have implemented 21 tests over 3 testing files. These all make sure 
 >
 > Answer:
 
---- question 11 fill here ---
+We have organized our CI into 1 single file, .github/workflows/main_flow.yml, which builds three virtual machine with the three most common operating systems (windows, macos and ubuntu latest releases), build our python version of choice on them (3.8), installs the requiered dependencies through pip and our requirements.txt file, authenticates to a service account on our google cloud projects, for this porpouse we generated a guithub secret with the key to service account, and through data version control gets the raw data files from a data bucket on the google cloud project, finally the workflow runs the implemented unit tests, or skips them as some tests we decided to run exclusively on local to save on resources from the github actions servers, and runs lint through ruff on the whole code to double check that it adjusts to the PEP8 guidelines, automatically making any requiered modifications to it. Originaly the dvc system was not localted in a cloud data bucket but rather on google drive and the number of tests has increased during time so that explains why the fisrt runs of the workflow are different from the last ones.
+The workflow also includes the cache system that individually stores generates a cache file for each of the operating systems including both dependencies and data files within it to improve the performance of the future runs.
+For our project an example of a triggered workflow can be seen here: <https://github.com/Frostforus/Patch_Camelyon_2024_MLOPS_G28/actions/runs/7584267424>*
 
 ## Running code and tracking experiments
 
@@ -340,7 +342,9 @@ Finally, we can see that after training is finished, the model checkpoint is als
 >
 > Answer:
 
---- question 16 fill here ---
+Initially our first approach was running the file with the error after printing any relevant information to the terminal, making some fixes and kept executing it this way until the problem was solved. While simple and intuitive this process proved to be slow and ineficient, and also carried the risk of leaving innecesary print statements on the code that could hinder the loggings and increase execution times, so taking into consideration that we all decided on using the Visual Studio Code interpreter we ended up opting for debugging the code through the use of it's built in debugger.
+For profiling we implemented the profiling.py file in wich we assesed the performance of the bigger functions through torch´s profiler app.
+The profiling stores the information for both GPU(only when available) and CPU, as well as storage (althou this proved to be useless given that we do not implement torch´s DataLoader class). We did find that our loading of the data is a botlle neck in resourcess and thought of tring to parallelizing this process but did not have time to implement this.
 
 ## Working in the cloud
 
@@ -465,7 +469,7 @@ Finally, we can see that after training is finished, the model checkpoint is als
 >
 > Answer:
 
---- question 25 fill here ---
+![Flow image.](figures/flow.png)
 
 ### Question 26
 
