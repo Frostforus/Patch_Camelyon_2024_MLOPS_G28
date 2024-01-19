@@ -104,7 +104,8 @@ end of the project.
 > **Enter the group number you signed up on <learn.inside.dtu.dk>**
 >
 > Answer:
-Group 28
+
+We are Group 28.
 
 ### Question 2
 > **Enter the study number for each member in the group**
@@ -115,7 +116,7 @@ Group 28
 >
 > Answer:
 
-s201758, s223407, s232457, s230234, s230243
+s201758, s230243, s232457, s223407, s230234
 
 ### Question 3
 > **What framework did you choose to work with and did it help you complete the project?**
@@ -162,7 +163,7 @@ Throughout our development process, we have manually maintained 'requirements.tx
 > *experiments.*
 > Answer:
 
-We have used the cookiecutter template as our base template. We were using the folders it provided however, we added some extra for our project and left some of the folders empty. For example, regarding the docker files we have created another folder in the root to store them together with the cloudbuild.yaml file for the cloud trigger.
+We have tried to follow the cookiecutter template and use it as the mainframe for our project. However, we have also implemented some new files to improve our workflow. For example, for docker we have created a separate folder that stores our docker files and the cloudbuild.yaml that makes the trigger event possible from the cloud. During implementing dvc we have also got files created regarding its set up like ".dvc" which has the config file, and data.dvc which defines the files from the data folder we wish to upload. Also our main data folder got located in the root in which we store our predictions, raw data, processed data etc. The original data folder from the template that is one level downer has our make_dataset.py which is going to produce our processed data from raw. We also added our reports folder in the root. When we are running the training of our model new folders are also appearing that are going to store the data from wandb.
 
 ### Question 6
 
@@ -324,7 +325,7 @@ Finally, we can see that after training is finished, the model checkpoint is als
 >
 > Answer:
 
---- question 15 fill here ---
+We used docker to create recreatable environments. We have developed docker files both for recreate the environment for running training and prediction also on our model. We had separated the experiments in a way that first we tried to make everything clear to run locally. For example, in the case of training we created the training pyton file that was giving us the correct model outcome, then we have built a docker images from we created a container that we ran. After we made sure the container creates the desired outcome we worked on building this docker file in the cloud. Then we made sure we can also save the generated model in a container registry. The last step was to implement the cloud run that automatically runs the created docker image when a git push happened on the master branch and saves the trained model in a data bucket.
 
 ### Question 16
 
@@ -356,7 +357,7 @@ Finally, we can see that after training is finished, the model checkpoint is als
 >
 > Answer:
 
---- question 17 fill here ---
+We have used many services from GCP for our project. For example, we used buckets in cloud storage where we stored the data from our repository using dvc as we set our remote storage there. We have also used data bucket to store our trained model after the training script. We have also used containers registry where we stored our docker images builded. For deployment, we used cloud run while also setting a trigger for pushing new files to the branch.
 
 ### Question 18
 
@@ -389,7 +390,7 @@ Finally, we can see that after training is finished, the model checkpoint is als
 >
 > Answer:
 
---- question 20 fill here ---
+[our_container_registry](figures/our_registry.png)
 
 ### Question 21
 
@@ -398,7 +399,7 @@ Finally, we can see that after training is finished, the model checkpoint is als
 >
 > Answer:
 
---- question 21 fill here ---
+[our_build](figures/our_build.png)
 
 ### Question 22
 
@@ -443,7 +444,7 @@ Finally, we can see that after training is finished, the model checkpoint is als
 >
 > Answer:
 
---- question 24 fill here ---
+We have used quite many as one of our group members ran out of his initial 50 free credits. As we looked into the reason behind we saw that data storage used lots of credit where we still did not find out the exact reason. What we saw, was that one day we had very extensive data loads periodically so maybe we forgot to turn off in our training file to upload always the data and model after each run. And as we debugged a lot, probably after each run it used cloud to upload the data. 
 
 ## Overall discussion of project
 
@@ -478,7 +479,8 @@ Finally, we can see that after training is finished, the model checkpoint is als
 >
 > Answer:
 
---- question 26 fill here ---
+With the project for some of us, it was already a struggle to use git and all the version-controlling software properly. In the last days, we started having also difficulties with dvc which worked perfectly fine locally but git was having issues regarding loading the data. Also deploying our model and making it easier and reproducible turned out challenging. In the previous courses, we got used to create a project and code that we understand perfectly and we are ready to hand in which got accepted by our professor but after the course finished nobody will use it or maybe it will not be even reproducible. Personally (Bence) I felt that when I am stuck with an issue and I start debugging I can go much in the attempting direction that can be very hard to implement in version control systems like git with commits, as it can be hard to explain and document every step that was meant to trying and debugging. Also, git is an amazing program to make group work easier and traceable, but it also became sometimes quite challenging to keep up a constant development in which we only include effective and perfectly working codes. All in all, it was still very good experience to improve our skills to create a reproducible
+environment.
 
 ### Question 27
 
@@ -495,4 +497,8 @@ Finally, we can see that after training is finished, the model checkpoint is als
 >
 > Answer:
 
-Student s223407 was in charge of setting up the model and training via pytorch and lightning as well as the train logging with WandB. Additionally helped with other tasks such as building docker images, setting up hydra config files, unit testing and triggers/actions.
+-Student s201758 was in charge of making the config file and its implementation. Also he made the docker images with its trigger in the cloud to create a docker everytime a push to the main happens. Also worked on data bucket set up like for model saving, docker iages load etc.
+-Student s230243
+-Student s232457
+-Student s223407 was in charge of setting up the model and training via pytorch and lightning as well as the train logging with WandB. Additionally helped with other tasks such as building docker images, setting up hydra config files, unit testing and triggers/actions.
+-Student s230234
