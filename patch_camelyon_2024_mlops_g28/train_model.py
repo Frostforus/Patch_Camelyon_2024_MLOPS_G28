@@ -51,7 +51,7 @@ def train(cfg) -> None:
 
     # Upload the model to Google Cloud Storage bucket
     bucket_name = "prediction-model-bucket"
-    storage_client = storage.Client()
+    storage_client = storage.Client.from_service_account_json("/etc/secret/json-file-for-training.json")
     bucket = storage_client.get_bucket(bucket_name)
 
     blob = bucket.blob("trained_model_out.pt")
